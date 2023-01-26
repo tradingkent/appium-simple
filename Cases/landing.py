@@ -23,6 +23,8 @@ class LanPage():
 
         time.sleep(5)
 
+        #sample
+
 
 landing = LanPage()
 landing.landing_page()
