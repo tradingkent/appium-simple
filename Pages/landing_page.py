@@ -127,6 +127,7 @@ class LandingPage():
         self.get_rad_btn_tripura().click()
 
     def enter_phone_number_field(self, number):
+        time.sleep(2)
         self.get_phone_number_field().send_keys(number)
 
     def enter_role_name_field(self, role_name):
