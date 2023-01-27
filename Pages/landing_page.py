@@ -1,16 +1,14 @@
 import time
-
+import pytest
 from appium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from Config.config import desired_cap
+#from Config.config import desired_cap
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif
 
-driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_cap)
-wait = WebDriverWait(driver, 20)
 
 
 class LandingPage():
