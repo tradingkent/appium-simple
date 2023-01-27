@@ -20,6 +20,15 @@ class LanPage():
         landing_page.click_next_button()
         landing_page.enter_role_name_field(details.get('name'))
         landing_page.click_next_button()
+        landing_page.enter_sec_pin_one(details.get('pin'))
+        landing_page.enter_sec_pin_two(details.get('pin'))
+        landing_page.click_allow_access_btn()
+        landing_page.click_allow_prompt()
+        landing_page.click_facility_name()
+        landing_page.click_yes_button()
+        landing_page.click_skip_button()
+
+
 
         time.sleep(5)
 
