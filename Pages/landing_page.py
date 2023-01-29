@@ -6,9 +6,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-#from Config.config import desired_cap
-from Utilities.data import verif, country_list_verif, region_clinic_list_verif
-
+# from Config.config import desired_cap
+from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details
 
 
 class LandingPage():
@@ -26,8 +25,6 @@ class LandingPage():
     phone_number_field = (By.ID, "org.simple.clinic.staging:id/phoneNumberEditText")
     role_name_field = (By.ID, "org.simple.clinic.staging:id/fullNameEditText")
 
-
-    # New code here
     sec_pin_one = (By.ID, "org.simple.clinic.staging:id/pinEditText")
     sec_pin_two = (By.ID, "org.simple.clinic.staging:id/confirmPinEditText")
     skip_button = (By.ID, "org.simple.clinic.staging:id/skipButton")
@@ -35,11 +32,15 @@ class LandingPage():
     allow_prompt = (By.ID, "com.android.permissioncontroller:id/permission_allow_foreground_only_button")
     facility_name = (By.XPATH, "//android.widget.LinearLayout[@bounds='[22,259][1058,525]']")
     yes_button = (By.ID, "org.simple.clinic.staging:id/yesButton")
+    search_facility = (By.ID, "org.simple.clinic.staging:id/searchEditText")
+    fac_name = (By.ID, "org.simple.clinic.staging:id/facilityNameTextView")
 
     country_list = (By.XPATH, "//android.widget.LinearLayout/android.widget.RadioButton")
     region_clinic_list = (By.XPATH, "//android.view.ViewGroup/android.widget.RadioButton")
+    facility_name_list = (By.XPATH, "//android.widget.LinearLayout/android.widget.TextView")
 
     landing_verif = (By.XPATH, "//android.widget.TextView[@text='PATIENTS']")
+    search_fac_name_verif = (By.ID, "org.simple.clinic.staging:id/facilityNameTextView")
 
     ##Elements##
 
@@ -83,14 +84,26 @@ class LandingPage():
     def get_skip_button(self):
         return self.wait.until(EC.element_to_be_clickable(self.skip_button))
 
+    def get_search_facility(self):
+        return self.wait.until(EC.element_to_be_clickable(self.search_facility))
+
     def get_country_list(self):
         return self.driver.find_elements(*self.country_list)
 
     def get_region_clinic_list(self):
         return self.driver.find_elements(*self.region_clinic_list)
 
+    def get_facility_name_list(self):
+        return self.driver.find_elements(*self.facility_name_list)
+
     def get_landing_verif(self):
         return self.driver.find_element(*self.landing_verif)
+
+    def get_search_fac_name_verif(self):
+        return self.driver.find_element(*self.search_fac_name_verif)
+
+    def get_fac_name(self):
+        return self.wait.until(EC.element_to_be_clickable(self.fac_name))
 
     ##Methods##
 
@@ -134,10 +147,11 @@ class LandingPage():
         self.get_role_name_field().send_keys(role_name)
 
     def enter_sec_pin_one(self, pin_one):
+        time.sleep(2)
         self.get_sec_pin_one().send_keys(pin_one)
 
     def enter_sec_pin_two(self, pin_two):
-        time.sleep(2)
+        time.sleep(3)
         self.get_sec_pin_two().send_keys(pin_two)
 
     def click_allow_access_btn(self):
@@ -145,9 +159,28 @@ class LandingPage():
 
     def click_allow_prompt(self):
         self.get_allow_prompt().click()
+        time.sleep(3)
+        facility_name_list = self.get_facility_name_list()
+
+        empty_facility_name_list = []
+        for facility_name in facility_name_list:
+            empty_facility_name_list.append(facility_name.text)
+        assert empty_facility_name_list == facility_name_list_verif, 'Expected Facility Name list not the same'
+        print(empty_facility_name_list)
+        print(facility_name_list_verif)
+        print('Facility Name List Success')
 
     def click_facility_name(self):
         self.get_facility_name().click()
+
+    def click_search_facility(self, search_fac):
+        time.sleep(2)
+        self.get_search_facility().send_keys(search_fac)
+        time.sleep(2)
+        search_fac_name_verif = self.get_search_fac_name_verif()
+        assert search_fac_name_verif.text == details.get('fac_name'), 'Unable to search facility name'
+        print('Search Facility Success')
+        self.get_fac_name().click()
 
     def click_yes_button(self):
         self.get_yes_button().click()
@@ -158,5 +191,3 @@ class LandingPage():
         home_page = self.get_landing_verif()
         assert home_page.text == verif.get('lan_to_home_verif'), 'Failed to proceed to Homepage'
         print('Landing Page Success')
-
-
