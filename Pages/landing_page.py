@@ -19,6 +19,7 @@ class LandingPage():
     ##Locators##
 
     next_button = (By.ID, "org.simple.clinic.staging:id/nextButton")
+    next_btn_verif = (By.XPATH, "//android.widget.Button[@text='NEXT']")
     get_started_button = (By.ID, "org.simple.clinic.staging:id/getStartedButton")
     rad_btn_demo_country = (By.XPATH, "//android.widget.RadioButton[@text='Demo Country']")
     rad_btn_tripura = (By.XPATH, "//android.widget.RadioButton[@text='Tripura']")
@@ -57,17 +58,16 @@ class LandingPage():
         return self.wait.until(EC.element_to_be_clickable(self.rad_btn_tripura))
 
     def get_phone_number_field(self):
-        return self.driver.find_element(*self.phone_number_field)
+        return self.wait.until(EC.element_to_be_clickable(self.phone_number_field))
 
     def get_role_name_field(self):
-        time.sleep(6)
-        return self.driver.find_element(*self.role_name_field)
+        return self.wait.until(EC.element_to_be_clickable(self.role_name_field))
 
     def get_sec_pin_one(self):
-        return self.driver.find_element(*self.sec_pin_one)
+        return self.wait.until(EC.element_to_be_clickable(self.sec_pin_one))
 
     def get_sec_pin_two(self):
-        return self.driver.find_element(*self.sec_pin_two)
+        return self.wait.until(EC.element_to_be_clickable(self.sec_pin_two))
 
     def get_allow_access_btn(self):
         return self.wait.until(EC.element_to_be_clickable(self.allow_access_btn))
@@ -100,14 +100,22 @@ class LandingPage():
         return self.driver.find_element(*self.landing_verif)
 
     def get_search_fac_name_verif(self):
-        return self.driver.find_element(*self.search_fac_name_verif)
+        return self.wait.until(EC.element_to_be_clickable(self.search_fac_name_verif))
+        #return self.driver.find_element(*self.search_fac_name_verif)
 
     def get_fac_name(self):
         return self.wait.until(EC.element_to_be_clickable(self.fac_name))
+        #return self.wait.until(EC.element_to_be_clickable(self.fac_name))
+
+    def get_next_btn_verif(self):
+        return self.driver.find_element(*self.next_button)
 
     ##Methods##
 
     def click_next_button(self):
+        time.sleep(3)
+        next_button_verif = self.get_next_btn_verif()
+        assert next_button_verif.text == verif.get('startup_verif'), 'App did not load successfully'
         self.get_next_button().click()
 
     def click_get_started_button(self):
@@ -140,18 +148,15 @@ class LandingPage():
         self.get_rad_btn_tripura().click()
 
     def enter_phone_number_field(self, number):
-        time.sleep(2)
         self.get_phone_number_field().send_keys(number)
 
     def enter_role_name_field(self, role_name):
         self.get_role_name_field().send_keys(role_name)
 
     def enter_sec_pin_one(self, pin_one):
-        time.sleep(2)
         self.get_sec_pin_one().send_keys(pin_one)
 
     def enter_sec_pin_two(self, pin_two):
-        time.sleep(3)
         self.get_sec_pin_two().send_keys(pin_two)
 
     def click_allow_access_btn(self):
@@ -174,7 +179,6 @@ class LandingPage():
         self.get_facility_name().click()
 
     def click_search_facility(self, search_fac):
-        time.sleep(2)
         self.get_search_facility().send_keys(search_fac)
         time.sleep(2)
         search_fac_name_verif = self.get_search_fac_name_verif()

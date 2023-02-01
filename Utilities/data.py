@@ -2,9 +2,13 @@
 details = {'number': '2351351519',
            'name': 'Nurse Deepa Signh',
            'pin': '1234',
-           'fac_name': 'HWC Desaiganj'}
+           'fac_name': 'HWC Desaiganj',
+           'pat_name': 'Jack Smith',
+           'age': '25', 'address': 'two blocks away',
+           'village': 'Good Village'}
 
-verif = {'lan_to_home_verif': 'PATIENTS'}
+verif = {'lan_to_home_verif': 'PATIENTS',
+         'startup_verif': 'NEXT'}
 
 country_list_verif = ['India', 'Bangladesh', 'Ethiopia', 'Sri Lanka', 'Demo Country']
 
