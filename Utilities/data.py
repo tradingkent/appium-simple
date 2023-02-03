@@ -26,6 +26,28 @@ facility_name_list_verif = ['HWC Desaiganj',
                             'Village Vada',
                             '3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura']
 
+med_list_verif = ['Amlodipine', 'Atenolol', 'Chlorthalidone', 'Hydrochlorothiazide', 'Insulin',
+                  'Lifestyle modification', 'Losartan', 'Losartan Hydrochlorathiazide', 'Metformin',
+                  'Nifidipine', 'Propranolol', 'T. Losartan + Hydrochlorthiazide', 'Telmisartan']
+
+blood_sugars_verif = ['Random blood sugar (RBS)', 'Fasting blood sugar (FBS)',
+                      'Post prandial blood sugar (PPBS)', 'HbA1c']
+
+meds_check_verif = ['Amlodipine 5 mg BD', 'Atenolol 50 mg BID', 'Chlorthalidone 12.5 mg']
+
+meds_new_check_verif = ['Amlodipine 5 mg BD', 'Aspirin 200 mg BD', 'Atenolol 50 mg BID', 'Chlorthalidone 12.5 mg']
+
+medical_data = {'days': '01',
+                'bp_res': '200 / 100',
+                'bp_date_visit': '1-Feb-2023',
+                'rbs': '35',
+                'diabetes_verif': '35 mg/dL RBS',
+                'sys': '200',
+                'dia': '100',
+                'new_meds': 'aspirin',
+                'new_dos': '200 mg', 'new_meds_verif': 'Aspirin 200 mg, BD',
+                'added_new_med': 'Aspirin'}
+
 
 
 

@@ -69,4 +69,7 @@ class TestAccReg():
         patient_page.click_prompt_not_now()
         patient_page.click_search_add_patient()
         patient_page.enter_search_patient_box(name_generator.names[0])
+        patient_page.click_search_new_patient()
+
+
 

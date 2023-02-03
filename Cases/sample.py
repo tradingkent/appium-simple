@@ -19,6 +19,7 @@ driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_cap)
 '''
 
 
+'''
 from faker import Faker
 
 class NameGenerator:
@@ -36,6 +37,8 @@ print(name_generator.generate_name())
 print(name_generator.names[0])
 
 '''
+
+'''
 import os
 from datetime import datetime
 
@@ -51,3 +54,21 @@ def create_folder():
 create_folder()
 
 '''
+
+
+
+#len = 25
+
+#print(type(len))
+''''
+sample = '28 days'
+sam_slice = sample[0:2]
+print(sam_slice)
+sam_cast = int(sam_slice)
+print(type(sam_cast))
+'''
+
+list_a = ['apple', 'banana', 'orange']
+
+assert 'apple' in list_a, 'Not found'
+print('Success')

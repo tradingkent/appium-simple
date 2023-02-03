@@ -15,9 +15,11 @@ class RandomNumberGenerator:
 
 
 class NameGenerator:
+
+    names = []
     def __init__(self):
         self.fake = Faker()
-        self.names = []
+        #self.names = []
 
     def generate_name(self):
         name = self.fake.name()

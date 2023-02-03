@@ -45,9 +45,7 @@ class PatientPage():
 
     search_patient_verif = (By.ID, "org.simple.clinic.staging:id/patientNameAgeGenderLabel")
 
-
-                                          
-
+    search_new_patient = (By.ID, "org.simple.clinic.staging:id/patientNameAgeGenderLabel")
 
     ##Elements##
 
@@ -112,6 +110,9 @@ class PatientPage():
 
     def get_search_patient_verif(self):
         return self.driver.find_element(*self.search_patient_verif)
+
+    def get_search_new_patient(self):
+        return self.wait.until(EC.element_to_be_clickable(self.search_new_patient))
 
     # def get_no_rad_btn(self):
     # return self.wait.until(EC.element_to_be_clickable(self.no_rad_btn))
@@ -229,7 +230,8 @@ class PatientPage():
         user_action.send_keys(pat_name).perform()
         time.sleep(4)
         pat_name_verif = self.get_search_patient_verif()
-        assert pat_name_verif.text == pat_name+', M, 25', 'Search of patient failed'
+        assert pat_name_verif.text == pat_name + ', M, 25', 'Search of patient failed'
         print('Search of patient success')
 
-
+    def click_search_new_patient(self):
+        self.get_search_new_patient().click()
