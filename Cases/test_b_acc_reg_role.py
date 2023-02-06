@@ -4,7 +4,7 @@ import time
 import pytest
 
 from Pages.landing_page import LandingPage
-from Utilities.common import RandomNumberGenerator
+from Utilities.common import RandomNumberGenerator, DocumentCreator
 from Utilities.common import NameGenerator
 from Utilities.data import details
 
@@ -13,6 +13,7 @@ from Pages.patient_page import PatientPage
 
 generator = RandomNumberGenerator()
 name_generator = NameGenerator()
+doc_creator = DocumentCreator()
 
 
 @pytest.mark.usefixtures('setup')
@@ -26,9 +27,9 @@ class TestAccReg():
         landing_page.click_rad_btn_demo_country()
         landing_page.click_rad_btn_tripura()
         landing_page.enter_phone_number_field(generator.generate_random_number())
-        landing_page.click_next_button()
+        landing_page.click_next_button_two()
         landing_page.enter_role_name_field(details.get('name'))
-        landing_page.click_next_button()
+        landing_page.click_next_button_three()
         landing_page.enter_sec_pin_one(details.get('pin'))
         landing_page.enter_sec_pin_two(details.get('pin'))
         landing_page.click_allow_access_btn()
@@ -36,6 +37,8 @@ class TestAccReg():
         landing_page.click_search_facility(details.get('fac_name'))
         landing_page.click_yes_button()
         landing_page.click_skip_button()
+
+        doc_creator.gen_documentation(5, 18, 2)
 
         video_rawdata = self.driver.stop_recording_screen()
         vid_name = 'sample'

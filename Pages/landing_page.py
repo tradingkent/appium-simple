@@ -122,6 +122,18 @@ class LandingPage(BaseDriver):
 
         self.cap_screenshot('1', '1')
 
+    def click_next_button_two(self):
+
+        self.get_next_button().click()
+
+        self.cap_screenshot('2', '5')
+
+    def click_next_button_three(self):
+
+        self.get_next_button().click()
+
+        self.cap_screenshot('2', '7')
+
     def click_get_started_button(self):
         self.get_get_started_button().click()
 
@@ -129,6 +141,7 @@ class LandingPage(BaseDriver):
 
     def click_rad_btn_demo_country(self):
         time.sleep(2)
+        self.cap_screenshot('2', '1')
         country_list = self.get_country_list()
 
         empty_country_list = []
@@ -139,6 +152,7 @@ class LandingPage(BaseDriver):
         print(country_list_verif)
         print('Country List Success')
         self.get_rad_btn_demo_country().click()
+        self.cap_screenshot('2', '2')
 
     def click_rad_btn_tripura(self):
         time.sleep(2)
@@ -152,24 +166,31 @@ class LandingPage(BaseDriver):
         print(region_clinic_list_verif)
         print('Region Clinic List Success')
         self.get_rad_btn_tripura().click()
+        self.cap_screenshot('2', '3')
 
     def enter_phone_number_field(self, number):
         self.get_phone_number_field().send_keys(number)
+        self.cap_screenshot('2', '4')
 
     def enter_role_name_field(self, role_name):
         self.get_role_name_field().send_keys(role_name)
+        self.cap_screenshot('2', '6')
 
     def enter_sec_pin_one(self, pin_one):
         self.get_sec_pin_one().send_keys(pin_one)
+        self.cap_screenshot('2', '8')
 
     def enter_sec_pin_two(self, pin_two):
         self.get_sec_pin_two().send_keys(pin_two)
+        self.cap_screenshot('2', '9')
 
     def click_allow_access_btn(self):
         self.get_allow_access_btn().click()
+        self.cap_screenshot('2', '10')
 
     def click_allow_prompt(self):
         self.get_allow_prompt().click()
+        self.cap_screenshot('2', '11')
         time.sleep(3)
         facility_name_list = self.get_facility_name_list()
 
@@ -187,6 +208,8 @@ class LandingPage(BaseDriver):
     def click_search_facility(self, search_fac):
         self.get_search_facility().send_keys(search_fac)
         time.sleep(2)
+
+        self.cap_screenshot('2', '12')
         search_fac_name_verif = self.get_search_fac_name_verif()
         assert search_fac_name_verif.text == details.get('fac_name'), 'Unable to search facility name'
         print('Search Facility Success')
@@ -194,9 +217,11 @@ class LandingPage(BaseDriver):
 
     def click_yes_button(self):
         self.get_yes_button().click()
+        self.cap_screenshot('2', '13')
 
     def click_skip_button(self):
         self.get_skip_button().click()
+        self.cap_screenshot('2', '14')
         time.sleep(5)
         home_page = self.get_landing_verif()
         assert home_page.text == verif.get('lan_to_home_verif'), 'Failed to proceed to Homepage'
