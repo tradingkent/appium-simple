@@ -6,13 +6,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from Utilities.base_driver import BaseDriver
 # from Config.config import desired_cap
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details
 
 
-class LandingPage():
+class LandingPage(BaseDriver):
 
     def __init__(self, driver, wait):  # driver,
+        super().__init__(driver)
         self.driver = driver
         self.wait = wait
 
@@ -118,8 +120,12 @@ class LandingPage():
         assert next_button_verif.text == verif.get('startup_verif'), 'App did not load successfully'
         self.get_next_button().click()
 
+        self.cap_screenshot('1', '1')
+
     def click_get_started_button(self):
         self.get_get_started_button().click()
+
+        self.cap_screenshot('1', '2')
 
     def click_rad_btn_demo_country(self):
         time.sleep(2)

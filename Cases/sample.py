@@ -44,16 +44,33 @@ from datetime import datetime
 
 def create_folder():
     date = datetime.now().strftime("%d-%m-%Y")
-    directory = ".\Screenshot" + date
+    directory = "C:\\python-appium\\simple-demo\\Screenshot" + date
 
-    #if not os.path.exists(directory):
-    os.makedirs(directory)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
     print("Directory '%s' created" % directory)
 
 create_folder()
-
 '''
+
+import os
+import shutil
+
+def create_folder():
+
+    for i in range(1, 23):
+        directory = f"C:\\python-appium\\simple-demo\\Screenshot\\TC_{str(i)}"
+        shutil.rmtree(directory)
+        os.makedirs(directory)
+
+
+create_folder()
+
+
+
+
+
 
 
 

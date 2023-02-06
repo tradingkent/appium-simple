@@ -1,17 +1,23 @@
 import base64
 import random
-import os
 import pytest
+
+import os
+import shutil
 
 from faker import Faker
 
+
+from docx import Document
+from docx.shared import Inches
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+from openpyxl import Workbook, load_workbook
 
 class RandomNumberGenerator:
     def generate_random_number(self):
         random_number = "".join([str(random.randint(0, 9)) for _ in range(10)])
         return random_number
-
-
 
 
 class NameGenerator:
@@ -29,4 +35,36 @@ class NameGenerator:
 
 #print(name_generator.generate_name())
 #print(name_generator.names[0])
+
+
+
+class FolderCreator:
+    def create_folder(self):
+
+        for i in range(1, 23):
+            directory = f"C:\\python-appium\\simple-demo\\Screenshot\\TC_{str(i)}"
+            shutil.rmtree(directory)
+            os.makedirs(directory)
+
+
+#folder_creator = FolderCreator()
+#folder_creator.create_folder()
+
+
+class DocumentCreator:
+    def gen_documentation(self, start, end, folder_num):
+
+        workbook = load_workbook(filename='C:\\python-appium\\simple-demo\\Files\\simple.xlsx')
+        sheet = workbook.active
+
+        document = Document()
+        a = document.add_heading('Simple', 0)
+        a.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+        for i in range(start, end):
+            document.add_paragraph(sheet[f'A{i}'].value)
+            document.add_picture(f'C:\\python-appium\\simple-demo\\Screenshot\\TC_{folder_num}\\'
+                                 f'{(str(i - (start - 1)))}.png', width=Inches(1.5))
+
+        document.save(f'C:\\python-appium\\simple-demo\\Screenshot\\TC_{folder_num}\\test.docx')
 
