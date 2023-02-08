@@ -74,5 +74,6 @@ class TestAccReg():
         patient_page.enter_search_patient_box(name_generator.names[0])
         patient_page.click_search_new_patient()
 
+        doc_creator.gen_documentation(19, 28, 3)
 
 

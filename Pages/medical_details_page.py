@@ -7,15 +7,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from Utilities.base_driver import BaseDriver
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif
 
 
-
-
-class MedDetails():
+class MedDetails(BaseDriver):
 
     def __init__(self, driver, wait):  # driver,
+        super().__init__(driver)
         self.driver = driver
         self.wait = wait
 
@@ -59,7 +59,6 @@ class MedDetails():
     sched_minus = (By.ID, "org.simple.clinic.staging:id/decrementDateButton")
     sched_add = (By.ID, "org.simple.clinic.staging:id/incrementDateButton")
 
-
     # Verif
     meds_selected_verif = (By.XPATH, "//android.widget.TextView[@index='1']")
     bp_result_verif = (By.ID, "org.simple.clinic.staging:id/readingsTextView")
@@ -92,7 +91,6 @@ class MedDetails():
 
     def get_medicine_list(self):
         return self.driver.find_elements(*self.medicine_list)
-
 
     def get_save_btn_add_drug(self):
         return self.wait.until(EC.element_to_be_clickable(self.save_btn_add_drug))
@@ -168,11 +166,11 @@ class MedDetails():
     def get_sched_add(self):
         return self.wait.until(EC.element_to_be_clickable(self.sched_add))
 
-
     ##Methods##
 
     def click_medicine_btn(self):
         self.get_medicine_btn().click()
+        self.cap_screenshot('4', '1')
         time.sleep(2)
         self.driver.swipe(518, 1254, 507, 1196, 300)
 
@@ -192,6 +190,8 @@ class MedDetails():
         self.get_dos_med_ateno().click()
         self.get_med_chlor().click()
         self.get_dos_med_chlor().click()
+
+        self.cap_screenshot('4', '2')
 
     def click_bp_btn(self):
         self.get_bp_btn().click()
@@ -262,6 +262,7 @@ class MedDetails():
 
     def click_save_btn_add_drug(self):
         self.get_save_btn_add_drug().click()
+        self.cap_screenshot('4', '3')
         time.sleep(2)
 
         med_check_verif = self.get_meds_selected_verif()
@@ -272,6 +273,7 @@ class MedDetails():
         assert emp_meds_verif == meds_check_verif, 'Selected Medicine is not located'
         print(emp_meds_verif)
         print(meds_check_verif)
+        self.cap_screenshot('4', '4')
 
     # Add BP
     def enter_systolic_field(self, systolic):
@@ -285,10 +287,10 @@ class MedDetails():
 
     def click_bp_day_field(self, day):
         self.get_bp_day_field().click()
-        self.driver.press_keycode(22) # right arrow
+        self.driver.press_keycode(22)  # right arrow
 
         for i in range(2):
-            self.driver.press_keycode(67) # backspace
+            self.driver.press_keycode(67)  # backspace
 
         self.get_bp_day_field().send_keys(day)
         user_action = TouchAction(self.driver)
@@ -318,6 +320,3 @@ class MedDetails():
         diabetes_result = self.get_diabetes_verif()
         assert diabetes_result.text == medical_data.get('diabetes_verif'), 'Blood Sugar not reflected'
         print('Success: Blood Sugar reflected')
-
-
-

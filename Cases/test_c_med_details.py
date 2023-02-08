@@ -6,7 +6,7 @@ import pytest
 from Pages.landing_page import LandingPage
 from Pages.medical_details_page import MedDetails
 from Pages.new_medicine_page import NewMedicine
-from Utilities.common import RandomNumberGenerator
+from Utilities.common import RandomNumberGenerator, DocumentCreator
 from Utilities.common import NameGenerator
 from Utilities.data import details, medical_data
 
@@ -15,6 +15,7 @@ from Pages.patient_page import PatientPage
 
 generator = RandomNumberGenerator()
 name_generator = NameGenerator()
+doc_creator = DocumentCreator()
 
 
 @pytest.mark.usefixtures('setup')
@@ -27,6 +28,8 @@ class TestMedDetails():
         medical_details.click_medicine_btn()
         medical_details.click_choose_meds()
         medical_details.click_save_btn_add_drug()
+
+        doc_creator.gen_documentation(29, 33, 4)
 
     def test_add_bp_details(self):
         # Adding of Blood pressure readings in Patient profile

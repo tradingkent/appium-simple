@@ -9,12 +9,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from Utilities.base_driver import BaseDriver
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details
 
 
-class PatientPage():
+class PatientPage(BaseDriver):
 
     def __init__(self, driver, wait):
+        super().__init__(driver)
         self.driver = driver
         self.wait = wait
 
@@ -118,8 +120,12 @@ class PatientPage():
         user_action = TouchAction(self.driver)
         user_action.tap(x=547, y=488).perform()
 
+        self.cap_screenshot('3', '1')
+
     def click_reg_new_patient(self):
         self.get_reg_new_patient().click()
+
+        self.cap_screenshot('3', '2')
 
     def enter_patient_name_field(self, patient_name):
         self.get_patient_name_field().send_keys(patient_name)
@@ -148,8 +154,12 @@ class PatientPage():
     def enter_village_field(self, village):
         self.get_village_field().send_keys(village)
 
+        self.cap_screenshot('3', '3')
+
     def click_next_btn(self):
         self.get_next_btn().click()
+
+        self.cap_screenshot('3', '4')
 
     def click_scroll(self):
         for i in range(3):
@@ -183,6 +193,8 @@ class PatientPage():
                                     f"view.ViewGroup/android.widget.RadioButton[1]")
             self.wait.until(EC.element_to_be_clickable(no_rad_btn)).click()
 
+        self.cap_screenshot('3', '6')
+
     def click_no_rad_btn_two(self):
         start = 0
         while start < 3:
@@ -195,6 +207,8 @@ class PatientPage():
                                     f"/android.widget.RelativeLayout/android.widget.LinearLayout/android."
                                     f"view.ViewGroup/android.widget.RadioButton[2]")
             self.wait.until(EC.element_to_be_clickable(no_rad_btn)).click()
+
+        self.cap_screenshot('3', '5')
 
     def click_no_rad_btn(self):
         start = 0
@@ -213,8 +227,12 @@ class PatientPage():
     def click_save_button(self):
         self.get_save_button().click()
 
+        self.cap_screenshot('3', '7')
+
     def click_prompt_not_now(self):
         self.get_prompt_not_now().click()
+
+        self.cap_screenshot('3', '8')
 
     def click_search_add_patient(self):
         self.get_search_field_home().click()
@@ -229,4 +247,6 @@ class PatientPage():
         print('Search of patient success')
 
     def click_search_new_patient(self):
+
+        self.cap_screenshot('3', '9')
         self.get_search_new_patient().click()

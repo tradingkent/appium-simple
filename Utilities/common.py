@@ -12,6 +12,8 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 from openpyxl import Workbook, load_workbook
 
+from Config.config import *
+
 
 class RandomNumberGenerator:
     def generate_random_number(self):
@@ -42,7 +44,7 @@ class FolderCreator:
 
 class DocumentCreator:
     def gen_documentation(self, start, end, folder_num):
-        workbook = load_workbook(filename='C:\\python-appium\\simple-demo\\Files\\simple.xlsx')
+        workbook = load_workbook(filename=test_design_dir)
         sheet = workbook.active
 
         document = Document()
@@ -55,3 +57,4 @@ class DocumentCreator:
                                  f'{(str(i - (start - 1)))}.png', width=Inches(1.5))
 
         document.save(f'C:\\python-appium\\simple-demo\\Screenshot\\TC_{folder_num}\\test.docx')
+
