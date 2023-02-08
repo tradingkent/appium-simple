@@ -6,13 +6,12 @@ import os
 import shutil
 
 from faker import Faker
-
-
 from docx import Document
 from docx.shared import Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 from openpyxl import Workbook, load_workbook
+
 
 class RandomNumberGenerator:
     def generate_random_number(self):
@@ -21,11 +20,11 @@ class RandomNumberGenerator:
 
 
 class NameGenerator:
-
     names = []
+
     def __init__(self):
         self.fake = Faker()
-        #self.names = []
+        # self.names = []
 
     def generate_name(self):
         name = self.fake.name()
@@ -33,27 +32,16 @@ class NameGenerator:
         return name
 
 
-#print(name_generator.generate_name())
-#print(name_generator.names[0])
-
-
-
 class FolderCreator:
     def create_folder(self):
-
         for i in range(1, 23):
             directory = f"C:\\python-appium\\simple-demo\\Screenshot\\TC_{str(i)}"
             shutil.rmtree(directory)
             os.makedirs(directory)
 
 
-#folder_creator = FolderCreator()
-#folder_creator.create_folder()
-
-
 class DocumentCreator:
     def gen_documentation(self, start, end, folder_num):
-
         workbook = load_workbook(filename='C:\\python-appium\\simple-demo\\Files\\simple.xlsx')
         sheet = workbook.active
 
@@ -67,4 +55,3 @@ class DocumentCreator:
                                  f'{(str(i - (start - 1)))}.png', width=Inches(1.5))
 
         document.save(f'C:\\python-appium\\simple-demo\\Screenshot\\TC_{folder_num}\\test.docx')
-

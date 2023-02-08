@@ -30,16 +30,6 @@ class MedDetails():
 
     # After click medecine
     medicine_list = (By.XPATH, "//android.widget.LinearLayout/android.widget.CheckBox")
-    '''
-    add_anthr_med = (By.ID, "org.simple.clinic.staging:id/prescribeddrug_item_addnewprescription")
-    search_med = (By.ID, "org.simple.clinic.staging:id/searchQueryEditText")
-    aspirin_od = (By.XPATH, "//android.widget.TextView[@text='Aspirin, 150 mg, OD']")
-    med_dos = (By.ID, "org.simple.clinic.staging:id/drugDosageEditText")
-    frequency_drp = (By.ID, "org.simple.clinic.staging:id/drugFrequencyEditText")
-    freq_bd = (By.XPATH, "//android.widget.CheckedTextView[@text='BD']")
-    add_btn = (By.ID, "org.simple.clinic.staging:id/saveButton")
-    '''
-
     save_btn_add_drug = (By.ID, "org.simple.clinic.staging:id/prescribeddrugs_done")
 
     med_amlo = (By.XPATH, "//android.widget.CheckBox[@text='Amlodipine']")
@@ -72,14 +62,10 @@ class MedDetails():
 
     # Verif
     meds_selected_verif = (By.XPATH, "//android.widget.TextView[@index='1']")
-
     bp_result_verif = (By.ID, "org.simple.clinic.staging:id/readingsTextView")
     bp_visit_date_verif = (By.ID, "org.simple.clinic.staging:id/dateTimeTextView")
-
     blood_sugar_verif = (By.XPATH, "//android.widget.TextView[@resource-id='org.simple.clinic.staging:id/itemName']")
-
     diabetes_verif = (By.ID, "org.simple.clinic.staging:id/readingTextView")
-
     landing_verif = (By.XPATH, "//android.widget.TextView[@text='PATIENTS']")
 
     ##Elements##
@@ -105,23 +91,8 @@ class MedDetails():
     # After click medecine
 
     def get_medicine_list(self):
-        #return self.wait.until(EC.element_to_be_clickable(self.medicine_list))
         return self.driver.find_elements(*self.medicine_list)
 
-    '''
-    def get_add_anthr_med(self):
-        return self.wait.until(EC.element_to_be_clickable(self.add_anthr_med))
-
-    def get_search_med(self):
-        return self.wait.until(EC.element_to_be_clickable(self.add_anthr_med))
-
-    def get_aspirin_od(self):
-        return self.wait.until(EC.element_to_be_clickable(self.add_anthr_med))
-
-    def get_add_btn(self):
-        return self.wait.until(EC.element_to_be_clickable(self.add_btn))
-    
-    '''
 
     def get_save_btn_add_drug(self):
         return self.wait.until(EC.element_to_be_clickable(self.save_btn_add_drug))
@@ -186,11 +157,10 @@ class MedDetails():
     def get_landing_verif(self):
         return self.wait.until(EC.element_to_be_clickable(self.landing_verif))
 
-    #Counter Verif
+    # Counter Verif
 
     def get_sched_date(self):
         return self.wait.until(EC.element_to_be_clickable(self.sched_date))
-        #return self.driver.find_element(*self.sched_date)
 
     def get_sched_minus(self):
         return self.wait.until(EC.element_to_be_clickable(self.sched_minus))
@@ -290,21 +260,6 @@ class MedDetails():
     def click_medicine_list(self):
         self.get_medicine_list().click()
 
-    '''
-    def click_add_anthr_med(self):
-        self.get_add_anthr_med().click()
-
-    def click_search_med(self):
-        self.get_search_med().click()
-
-    def click_aspirin_od(self):
-        self.get_aspirin_od().click()
-
-    def click_add_btn(self):
-        self.get_add_btn().click()
-    
-    '''
-
     def click_save_btn_add_drug(self):
         self.get_save_btn_add_drug().click()
         time.sleep(2)
@@ -347,7 +302,6 @@ class MedDetails():
         print('Success: Blood Pressure readings reflected')
         assert bp_date_visit.text == medical_data.get('bp_date_visit'), 'Visit date not reflected'
         print('Success: Visit date reflected')
-
 
     # Diabetes
 

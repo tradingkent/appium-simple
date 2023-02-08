@@ -25,7 +25,6 @@ class NewMedicine():
     search_new_patient = (By.ID, "org.simple.clinic.staging:id/patientNameAgeGenderLabel")
 
     medicine_btn = (By.ID, "org.simple.clinic.staging:id/updateButton")
-
     medicine_list = (By.XPATH, "//android.widget.LinearLayout/android.widget.CheckBox")
     add_anthr_med = (By.ID, "org.simple.clinic.staging:id/prescribeddrug_item_addnewprescription")
     search_med = (By.ID, "org.simple.clinic.staging:id/searchQueryEditText")
@@ -54,7 +53,6 @@ class NewMedicine():
         return self.wait.until(EC.element_to_be_clickable(self.medicine_btn))
 
     def get_medicine_list(self):
-        #return self.wait.until(EC.element_to_be_clickable(self.medicine_list))
         return self.driver.find_elements(*self.medicine_list)
 
     def get_add_anthr_med(self):

@@ -7,7 +7,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
-# from Config.config import desired_cap
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details
 
 
@@ -103,11 +102,9 @@ class LandingPage(BaseDriver):
 
     def get_search_fac_name_verif(self):
         return self.wait.until(EC.element_to_be_clickable(self.search_fac_name_verif))
-        #return self.driver.find_element(*self.search_fac_name_verif)
 
     def get_fac_name(self):
         return self.wait.until(EC.element_to_be_clickable(self.fac_name))
-        #return self.wait.until(EC.element_to_be_clickable(self.fac_name))
 
     def get_next_btn_verif(self):
         return self.driver.find_element(*self.next_button)

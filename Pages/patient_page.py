@@ -14,7 +14,7 @@ from Utilities.data import verif, country_list_verif, region_clinic_list_verif, 
 
 class PatientPage():
 
-    def __init__(self, driver, wait):  # driver,
+    def __init__(self, driver, wait):
         self.driver = driver
         self.wait = wait
 
@@ -33,19 +33,16 @@ class PatientPage():
     village_field = (By.ID, "org.simple.clinic.staging:id/colonyOrVillageEditText")
     next_btn = (By.ID, "org.simple.clinic.staging:id/saveButton")
 
-    illness_list = (By.XPATH, "//android.view.ViewGroup/android.widget.TextView")
-
     next_button = (By.ID, "org.simple.clinic.staging:id/nextButton")
     save_button = (By.ID, "org.simple.clinic.staging:id/doneButton")
     prompt_not_now = (By.ID, "android:id/button2")
 
     search_field_home = (By.ID, "org.simple.clinic.staging:id/searchPatientsButton")
-
     search_patient_box = (By.ID, "org.simple.clinic.staging:id/searchQueryTextInputLayout")
-
     search_patient_verif = (By.ID, "org.simple.clinic.staging:id/patientNameAgeGenderLabel")
-
     search_new_patient = (By.ID, "org.simple.clinic.staging:id/patientNameAgeGenderLabel")
+
+    illness_list = (By.XPATH, "//android.view.ViewGroup/android.widget.TextView")
 
     ##Elements##
 
@@ -57,11 +54,9 @@ class PatientPage():
 
     def get_patient_name_field(self):
         return self.wait.until(EC.element_to_be_clickable(self.patient_name_field))
-        # return self.driver.find_element(*self.patient_name_field)
 
     def get_age_field(self):
         return self.wait.until(EC.element_to_be_clickable(self.age_field))
-        # return self.driver.find_element(*self.age_field)
 
     def get_dob_field(self):
         return self.driver.find_element(*self.dob_field)
@@ -90,8 +85,10 @@ class PatientPage():
     def get_illness_list(self):
         return self.driver.find_element(*self.illness_list)
 
+    '''
     def get_yes_rad_btn(self):
         return self.wait.until(EC.element_to_be_clickable(self.yes_rad_btn))
+    '''
 
     def get_next_button(self):
         return self.wait.until(EC.element_to_be_clickable(self.next_button))
@@ -114,8 +111,6 @@ class PatientPage():
     def get_search_new_patient(self):
         return self.wait.until(EC.element_to_be_clickable(self.search_new_patient))
 
-    # def get_no_rad_btn(self):
-    # return self.wait.until(EC.element_to_be_clickable(self.no_rad_btn))
 
     ##Methods##
 
