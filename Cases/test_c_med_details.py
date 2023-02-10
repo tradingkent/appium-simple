@@ -6,6 +6,7 @@ import pytest
 from Pages.landing_page import LandingPage
 from Pages.medical_details_page import MedDetails
 from Pages.new_medicine_page import NewMedicine
+from Pages.removal_page import RemDetails
 from Utilities.common import RandomNumberGenerator, DocumentCreator
 from Utilities.common import NameGenerator
 from Utilities.data import details, medical_data
@@ -62,3 +63,39 @@ class TestMedDetails():
         new_meds.click_freq_bd()
         new_meds.click_add_btn()
         new_meds.click_save_btn()
+
+    def test_remove_existing_meds(self):
+        # Removal of existing medicine
+
+        rem_details = RemDetails(self.driver, self.wait)
+        rem_details.click_medicine_btn()
+        rem_details.click_uncheck_meds()
+        rem_details.click_save_btn()
+
+    def test_update_bp_details(self):
+        # Update existing Blood pressure details
+
+        rem_details = RemDetails(self.driver, self.wait)
+        rem_details.click_bp_edit()
+        rem_details.enter_sys_dia_edit(medical_data.get('sys_new'),
+                                       medical_data.get('dia_new'))
+
+    def test_remove_bp_details(self):
+        # Remove existing blood pressure details
+
+        rem_details = RemDetails(self.driver, self.wait)
+        rem_details.click_bp_edit_remove()
+        rem_details.click_remove_bp_btn()
+        rem_details.click_remove_prompt_bp_btn()
+
+    def test_update_med_history(self):
+        # Update medical history
+
+        rem_details = RemDetails(self.driver, self.wait)
+        rem_details.click_edit_save_btn()
+        rem_details.click_not_now_prompt()
+        rem_details.click_done_btn()
+        rem_details.click_search_new_patient()
+
+
+

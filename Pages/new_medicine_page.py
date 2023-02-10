@@ -95,6 +95,7 @@ class NewMedicine():
         user_action.send_keys(pat_name).perform()
 
     def click_search_new_patient(self):
+        time.sleep(2)
         self.get_search_new_patient().click()
 
     def click_medicine_btn(self):

@@ -46,7 +46,11 @@ medical_data = {'days': '01',
                 'dia': '100',
                 'new_meds': 'aspirin',
                 'new_dos': '200 mg', 'new_meds_verif': 'Aspirin 200 mg, BD',
-                'added_new_med': 'Aspirin'}
+                'added_new_med': 'Aspirin', 'sys_new': '190', 'dia_new': '180'}
+
+
+removal_verif = {'med_removed': 'No medicines added', 'new_bp_edit': '190 / 180',
+                 'bp_removed': 'No blood pressures added'}
 
 
 
