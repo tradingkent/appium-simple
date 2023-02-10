@@ -311,6 +311,7 @@ class MedDetails(BaseDriver):
         self.get_rbs_option().click()
 
     def enter_rbs_field(self, rbs):
+        time.sleep(2)
         self.get_rbs_field().send_keys(rbs)
         time.sleep(2)
 

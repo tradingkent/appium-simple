@@ -52,6 +52,15 @@ medical_data = {'days': '01',
 removal_verif = {'med_removed': 'No medicines added', 'new_bp_edit': '190 / 180',
                  'bp_removed': 'No blood pressures added'}
 
+new_details_edit = {'number': '123456789',
+                    'age': '26',
+                    'address': 'three blocks away',
+                    'village': 'New Good Village'}
+
+new_details_verif = {'name_verif': ', F, 26',
+                     'address_verif': 'three blocks away, New Good Village, Larch County, Tripura',
+                     'no_search': 'No patients match'}
+
 
 
 
