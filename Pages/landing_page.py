@@ -7,7 +7,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
+from Utilities.common import LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details
+
+lg = LogFunc()
+logger = lg.get_log()
 
 
 class LandingPage(BaseDriver):
@@ -115,6 +119,7 @@ class LandingPage(BaseDriver):
         time.sleep(3)
         next_button_verif = self.get_next_btn_verif()
         assert next_button_verif.text == verif.get('startup_verif'), 'App did not load successfully'
+        logger.info('App Launch Successfully')
         self.get_next_button().click()
 
         self.cap_screenshot('1', '1')

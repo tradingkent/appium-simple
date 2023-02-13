@@ -1,4 +1,6 @@
 import base64
+import logging
+import inspect
 import random
 import pytest
 
@@ -58,3 +60,14 @@ class DocumentCreator:
 
         document.save(f'C:\\python-appium\\simple-demo\\Screenshot\\TC_{folder_num}\\test.docx')
 
+class LogFunc:
+    def get_log(logLevel=logging.DEBUG):
+
+        logger_name = inspect.stack()[1][3]
+        logger = logging.getLogger(logger_name)
+        logger.setLevel(logging.DEBUG)
+        fh = logging.FileHandler(log_dir)
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s' , datefmt='%m/%d/%Y %I:%M:%S %p')
+        fh.setFormatter(formatter)
+        logger.addHandler(fh)
+        return logger
