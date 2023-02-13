@@ -3,6 +3,7 @@ import os
 import time
 import pytest
 
+from Pages.change_facility_page import ChangeFac
 from Pages.landing_page import LandingPage
 from Pages.medical_details_page import MedDetails
 from Pages.new_medicine_page import NewMedicine
@@ -44,6 +45,14 @@ class TestMedDetails():
         medical_details.click_diabetes_btn()
         medical_details.click_rbs_option()
         medical_details.enter_rbs_field(medical_data.get('rbs'))
+
+    def test_switch_diff_facility(self):
+        # Switch to a different facility (Medical Facilitator)
+
+        medical_details = MedDetails(self.driver, self.wait)
+        change_fac = ChangeFac(self.driver, self.wait)
+        change_fac.click_change_fac_btn()
+        change_fac.click_new_fac_uhc_rees()
         medical_details.click_save_btn()
         medical_details.click_done_btn()
 
@@ -96,6 +105,3 @@ class TestMedDetails():
         rem_details.click_not_now_prompt()
         rem_details.click_done_btn()
         rem_details.click_search_new_patient()
-
-
-

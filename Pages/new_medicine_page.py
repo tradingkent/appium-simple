@@ -100,6 +100,7 @@ class NewMedicine():
 
     def click_medicine_btn(self):
         self.get_medicine_btn().click()
+        time.sleep(2)
         for i in range(2):
             self.driver.swipe(493, 1613, 500, 721, 300)
 

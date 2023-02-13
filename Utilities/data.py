@@ -61,6 +61,8 @@ new_details_verif = {'name_verif': ', F, 26',
                      'address_verif': 'three blocks away, New Good Village, Larch County, Tripura',
                      'no_search': 'No patients match'}
 
+change_fac_verif = {'new_faci': 'UHC Rees'}
+
 
 
 

@@ -122,6 +122,7 @@ class ModDetails(BaseDriver):
 
     def click_edit_phone_number(self, new_number):
         self.get_edit_phone_number().click()
+        time.sleep(2)
         self.get_clear_text().click()
         self.get_edit_phone_number().send_keys(new_number)
 
@@ -138,11 +139,13 @@ class ModDetails(BaseDriver):
 
     def click_edit_address(self, new_address):
         self.get_edit_address().click()
+        time.sleep(2)
         self.get_clear_text().click()
         self.get_edit_address().send_keys(new_address)
 
     def click_edit_village(self, new_village):
         self.get_edit_village().click()
+        time.sleep(2)
         self.get_clear_text().click()
         self.get_edit_village().send_keys(new_village)
 
@@ -183,6 +186,9 @@ class ModDetails(BaseDriver):
         search_result_del = self.get_search_verif_no_res()
         assert search_result_del.text == new_details_verif.get('no_search'), 'Patient record not deleted'
         print('Success Patient Record Deletion')
+
+        for i in range(2):
+            self.driver.back()
 
 
 
