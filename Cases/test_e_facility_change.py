@@ -30,4 +30,7 @@ class TestFacChange():
         change_fac.click_fac_sel_btn()
         change_fac.click_new_fac()
         change_fac.click_yes_btn()
+        change_fac.click_fac_sel_btn()
+        change_fac.click_new_fac_hwc()
+        change_fac.click_yess_btn()
 

@@ -48,6 +48,10 @@ class LandingPage(BaseDriver):
     landing_verif = (By.XPATH, "//android.widget.TextView[@text='PATIENTS']")
     search_fac_name_verif = (By.ID, "org.simple.clinic.staging:id/facilityNameTextView")
 
+    #trial
+    overdue_btn = (By.XPATH, "//android.widget.TextView[@text='OVERDUE']")
+    patient_btn = (By.XPATH, "//android.widget.TextView[@text='PATIENTS']")
+
     ##Elements##
 
     def get_next_button(self):
@@ -112,6 +116,13 @@ class LandingPage(BaseDriver):
 
     def get_next_btn_verif(self):
         return self.driver.find_element(*self.next_button)
+
+    #trial
+    def get_overdue_btn(self):
+        return self.wait.until(EC.element_to_be_clickable(self.overdue_btn))
+
+    def get_patients_btn(self):
+        return self.wait.until(EC.element_to_be_clickable(self.patient_btn))
 
     ##Methods##
 
@@ -228,3 +239,8 @@ class LandingPage(BaseDriver):
         home_page = self.get_landing_verif()
         assert home_page.text == verif.get('lan_to_home_verif'), 'Failed to proceed to Homepage'
         print('Landing Page Success')
+
+        #trial
+        #self.get_overdue_btn().click()
+        #time.sleep(10)
+        #self.get_patients_btn().click()

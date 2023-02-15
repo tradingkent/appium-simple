@@ -439,7 +439,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 13-Feb-2023 at 20:14:15 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 15-Feb-2023 at 22:10:45 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -458,8 +458,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.11.1</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 21.53 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>19 tests ran in 433.08 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">17 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">2 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -470,12 +470,228 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">Cases/test_d_modify_patient.py::TestModDetails::test_update_pat_profile</td>
+          <td class="col-duration">27.74</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;Cases.test_d_modify_patient.TestModDetails object at 0x000001EB163A7010&gt;<br/><br/>    def test_update_pat_profile(self):<br/>        # Update of Patient  profile<br/>    <br/>        mod_details = ModDetails(self.driver, self.wait)<br/>        mod_details.click_edit_patient_btn()<br/>        mod_details.click_edit_phone_number(new_details_edit.get(&#x27;number&#x27;))<br/>        mod_details.click_edit_age(new_details_edit.get(&#x27;age&#x27;))<br/>        mod_details.click_female_rad_btn()<br/>        mod_details.click_edit_address(new_details_edit.get(&#x27;address&#x27;))<br/>        mod_details.click_edit_village(new_details_edit.get(&#x27;village&#x27;))<br/>&gt;       mod_details.click_save_edit()<br/><br/>Cases\test_d_modify_patient.py:36: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;Pages.modify_patient_page.ModDetails object at 0x000001EB16429410&gt;<br/><br/>    def click_save_edit(self):<br/>        self.get_save_edit().click()<br/>        time.sleep(2)<br/>    <br/>        new_name_verif = self.get_name_verif()<br/>        new_address_verif = self.get_address_verif()<br/>        new_contact_verif = self.get_contact_verif()<br/>    <br/>        assert new_name_verif.text == name_generator.names[0]+new_details_verif.get(&#x27;name_verif&#x27;), &#x27;Name not updated&#x27;<br/>&gt;       assert new_address_verif.text == new_details_verif.get(&#x27;address_verif&#x27;), &#x27;Address not updated&#x27;<br/><span class="error">E       AssertionError: Address not updated</span><br/><br/>Pages\modify_patient_page.py:161: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">Cases/test_j_overdue_no_visit.py::TestOverdueNoVisit::test_overdue_no_visit</td>
+          <td class="col-duration">1.14</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;Cases.test_j_overdue_no_visit.TestOverdueNoVisit object at 0x000001EB163F1250&gt;<br/><br/>    def test_overdue_no_visit(self):<br/>        # Overdue tab validation of patients no visit<br/>    <br/>        overdue_details = OverdueDetails(self.driver, self.wait)<br/>&gt;       overdue_details.click_no_visit_drp()<br/><br/>Cases\test_j_overdue_no_visit.py:31: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;Pages.overdue_page.OverdueDetails object at 0x000001EB16429F10&gt;<br/><br/>    def click_no_visit_drp(self):<br/>        self.get_no_visit_drp().click()<br/>    <br/>        no_visit = self.get_no_visit_drp()<br/>        value = int(no_visit.text)<br/>        print(value)<br/>&gt;       assert value != 0, &#x27;No visit is empty&#x27;<br/><span class="error">E       AssertionError: No visit is empty</span><br/><br/>Pages\overdue_page.py:173: AssertionError<br/> ------------------------------Captured stdout call------------------------------ <br/>0
+<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">Cases/test_a_startup.py::TestLanPage::test_startup</td>
-          <td class="col-duration">19.15</td>
+          <td class="col-duration">18.57</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     &lt;module&gt;:landing_page.py:122 App Launch Successfully<br/></div></td></tr></tbody></table></body></html>
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     &lt;module&gt;:landing_page.py:133 App Launch Successfully<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_b_acc_reg_role.py::TestAccReg::test_acc_reg</td>
+          <td class="col-duration">40.08</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>[&#x27;India&#x27;, &#x27;Bangladesh&#x27;, &#x27;Ethiopia&#x27;, &#x27;Sri Lanka&#x27;, &#x27;Demo Country&#x27;]
+[&#x27;India&#x27;, &#x27;Bangladesh&#x27;, &#x27;Ethiopia&#x27;, &#x27;Sri Lanka&#x27;, &#x27;Demo Country&#x27;]
+Country List Success
+[&#x27;Andaman and Nicobar Islands&#x27;, &#x27;Andhra Pradesh&#x27;, &#x27;Bihar&#x27;, &#x27;Chhattisgarh&#x27;, &#x27;Jammu and Kashmir&#x27;, &#x27;Kerala&#x27;, &#x27;Manipur&#x27;, &#x27;Sikkim&#x27;, &#x27;Tripura&#x27;, &#x27;West Bengal&#x27;]
+[&#x27;Andaman and Nicobar Islands&#x27;, &#x27;Andhra Pradesh&#x27;, &#x27;Bihar&#x27;, &#x27;Chhattisgarh&#x27;, &#x27;Jammu and Kashmir&#x27;, &#x27;Kerala&#x27;, &#x27;Manipur&#x27;, &#x27;Sikkim&#x27;, &#x27;Tripura&#x27;, &#x27;West Bengal&#x27;]
+Region Clinic List Success
+[&#x27;HWC Desaiganj&#x27;, &#x27;Gr Floor, Plot No 260, Mehar Bldg, Sector 28, Vashi, Larch County, Tripura&#x27;, &#x27;HWC Umri Pragane Balapur&#x27;, &#x27;14 Basement Raheja Complex 834, Anna Salai, Larch County, Tripura&#x27;, &#x27;UHC Rees&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;USAD Gokul Shirgaon&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;Village Vada&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;]
+[&#x27;HWC Desaiganj&#x27;, &#x27;Gr Floor, Plot No 260, Mehar Bldg, Sector 28, Vashi, Larch County, Tripura&#x27;, &#x27;HWC Umri Pragane Balapur&#x27;, &#x27;14 Basement Raheja Complex 834, Anna Salai, Larch County, Tripura&#x27;, &#x27;UHC Rees&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;USAD Gokul Shirgaon&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;Village Vada&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;]
+Facility Name List Success
+Search Facility Success
+Landing Page Success
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_b_acc_reg_role.py::TestAccReg::test_add_patient</td>
+          <td class="col-duration">44.53</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Search of patient success
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_c_med_details.py::TestMedDetails::test_add_med_details</td>
+          <td class="col-duration">15.49</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>[&#x27;Amlodipine&#x27;, &#x27;Atenolol&#x27;, &#x27;Chlorthalidone&#x27;, &#x27;Hydrochlorothiazide&#x27;, &#x27;Insulin&#x27;, &#x27;Lifestyle modification&#x27;, &#x27;Losartan&#x27;, &#x27;Losartan Hydrochlorathiazide&#x27;, &#x27;Metformin&#x27;, &#x27;Nifidipine&#x27;, &#x27;Propranolol&#x27;, &#x27;T. Losartan + Hydrochlorthiazide&#x27;, &#x27;Telmisartan&#x27;]
+[&#x27;Amlodipine&#x27;, &#x27;Atenolol&#x27;, &#x27;Chlorthalidone&#x27;, &#x27;Hydrochlorothiazide&#x27;, &#x27;Insulin&#x27;, &#x27;Lifestyle modification&#x27;, &#x27;Losartan&#x27;, &#x27;Losartan Hydrochlorathiazide&#x27;, &#x27;Metformin&#x27;, &#x27;Nifidipine&#x27;, &#x27;Propranolol&#x27;, &#x27;T. Losartan + Hydrochlorthiazide&#x27;, &#x27;Telmisartan&#x27;]
+[&#x27;Amlodipine 5 mg BD&#x27;, &#x27;Atenolol 50 mg BID&#x27;, &#x27;Chlorthalidone 12.5 mg&#x27;]
+[&#x27;Amlodipine 5 mg BD&#x27;, &#x27;Atenolol 50 mg BID&#x27;, &#x27;Chlorthalidone 12.5 mg&#x27;]
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_c_med_details.py::TestMedDetails::test_add_bp_details</td>
+          <td class="col-duration">17.92</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Success: Blood Pressure readings reflected
+Success: Visit date reflected
+[&#x27;Random blood sugar (RBS)&#x27;, &#x27;Fasting blood sugar (FBS)&#x27;, &#x27;Post prandial blood sugar (PPBS)&#x27;, &#x27;HbA1c&#x27;]
+[&#x27;Random blood sugar (RBS)&#x27;, &#x27;Fasting blood sugar (FBS)&#x27;, &#x27;Post prandial blood sugar (PPBS)&#x27;, &#x27;HbA1c&#x27;]
+Success: Blood Sugar Category
+Success: Blood Sugar reflected
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_c_med_details.py::TestMedDetails::test_switch_diff_facility</td>
+          <td class="col-duration">15.60</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Facility change success
+25
+25
+Success Minus Counter check
+28
+28
+Success Add Counter check
+Success Add Medical Details
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_c_med_details.py::TestMedDetails::test_add_new_meds</td>
+          <td class="col-duration">27.83</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>[&#x27;Aspirin&#x27;, &#x27;Chlorthalidone&#x27;, &#x27;Atenolol&#x27;, &#x27;Amlodipine&#x27;, &#x27;Hydrochlorothiazide&#x27;, &#x27;Insulin&#x27;, &#x27;Lifestyle modification&#x27;, &#x27;Losartan&#x27;, &#x27;Losartan Hydrochlorathiazide&#x27;, &#x27;Metformin&#x27;, &#x27;Nifidipine&#x27;, &#x27;Propranolol&#x27;, &#x27;T. Losartan + Hydrochlorthiazide&#x27;]
+Success: New medicine added
+[&#x27;Amlodipine 5 mg BD&#x27;, &#x27;Aspirin 200 mg BD&#x27;, &#x27;Atenolol 50 mg BID&#x27;, &#x27;Chlorthalidone 12.5 mg&#x27;]
+[&#x27;Amlodipine 5 mg BD&#x27;, &#x27;Aspirin 200 mg BD&#x27;, &#x27;Atenolol 50 mg BID&#x27;, &#x27;Chlorthalidone 12.5 mg&#x27;]
+Success: Add Medicine
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_c_med_details.py::TestMedDetails::test_remove_existing_meds</td>
+          <td class="col-duration">14.63</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Uncheck of meds success
+Success removal of Meds
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_c_med_details.py::TestMedDetails::test_update_bp_details</td>
+          <td class="col-duration">11.36</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>New BP detected
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_c_med_details.py::TestMedDetails::test_remove_bp_details</td>
+          <td class="col-duration">4.84</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>BP removal success
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_c_med_details.py::TestMedDetails::test_update_med_history</td>
+          <td class="col-duration">6.68</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Search Update Meds Success
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_d_modify_patient.py::TestModDetails::test_delete_pat_profile</td>
+          <td class="col-duration">12.39</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Success Patient Record Deletion
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_e_facility_change.py::TestFacChange::test_facility_change</td>
+          <td class="col-duration">14.04</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>[&#x27;HWC Desaiganj&#x27;, &#x27;Gr Floor, Plot No 260, Mehar Bldg, Sector 28, Vashi, Larch County, Tripura&#x27;, &#x27;HWC Umri Pragane Balapur&#x27;, &#x27;14 Basement Raheja Complex 834, Anna Salai, Larch County, Tripura&#x27;, &#x27;UHC Rees&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;USAD Gokul Shirgaon&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;Village Vada&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;]
+[&#x27;HWC Desaiganj&#x27;, &#x27;Gr Floor, Plot No 260, Mehar Bldg, Sector 28, Vashi, Larch County, Tripura&#x27;, &#x27;HWC Umri Pragane Balapur&#x27;, &#x27;14 Basement Raheja Complex 834, Anna Salai, Larch County, Tripura&#x27;, &#x27;UHC Rees&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;USAD Gokul Shirgaon&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;Village Vada&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;]
+Facility Name List Success
+Facility change success
+[&#x27;HWC Desaiganj&#x27;, &#x27;Gr Floor, Plot No 260, Mehar Bldg, Sector 28, Vashi, Larch County, Tripura&#x27;, &#x27;HWC Umri Pragane Balapur&#x27;, &#x27;14 Basement Raheja Complex 834, Anna Salai, Larch County, Tripura&#x27;, &#x27;UHC Rees&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;USAD Gokul Shirgaon&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;Village Vada&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;]
+[&#x27;HWC Desaiganj&#x27;, &#x27;Gr Floor, Plot No 260, Mehar Bldg, Sector 28, Vashi, Larch County, Tripura&#x27;, &#x27;HWC Umri Pragane Balapur&#x27;, &#x27;14 Basement Raheja Complex 834, Anna Salai, Larch County, Tripura&#x27;, &#x27;UHC Rees&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;USAD Gokul Shirgaon&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;, &#x27;Village Vada&#x27;, &#x27;3, Mathura Chaya, Navghar Road, Bhayander, Larch County, Tripura&#x27;]
+Facility Name List Success
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_f_overdue_pending_call.py::TestOverduePenCall::test_overdue_pending_call</td>
+          <td class="col-duration">58.02</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Overdue Patient Found
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_g_overdue_agreed_visit.py::TestOverdueAgreed::test_overdue_agreed_visit</td>
+          <td class="col-duration">80.79</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Success
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_h_overdue_remind_call.py::TestOverdueRemind::test_overdue_remind_call</td>
+          <td class="col-duration">7.31</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Success
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Cases/test_i_overdue_remove_list.py::TestOverdueRemove::test_overdue_removed_list</td>
+          <td class="col-duration">7.74</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>3
+Success
+<br/></div></td></tr></tbody></table></body></html>

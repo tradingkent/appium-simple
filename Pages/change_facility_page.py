@@ -23,11 +23,13 @@ class ChangeFac(BaseDriver):
 
     change_fac_btn = (By.ID, "org.simple.clinic.staging:id/changeAssignedFacilityButton")
     new_fac_uhc_rees = (By.XPATH, "//android.widget.TextView[@text='UHC Rees']")
+    new_fac_hwc_desai = (By.XPATH, "//android.widget.TextView[@text='HWC Desaiganj']")
     new_fac_verif = (By.ID, "org.simple.clinic.staging:id/assignedFacilityTextView")
 
     fac_sel_btn = (By.ID, "org.simple.clinic.staging:id/facilitySelectButton")
     facility_name_list = (By.XPATH, "//android.widget.LinearLayout/android.widget.TextView")
     yes_btn = (By.ID, "org.simple.clinic.staging:id/yesButton")
+    sync_btn = (By.ID, "org.simple.clinic.staging:id/statusImageView")
 
     ##Elements##
 
@@ -36,6 +38,9 @@ class ChangeFac(BaseDriver):
 
     def get_new_fac_uhc_rees(self):
         return self.wait.until(EC.element_to_be_clickable(self.new_fac_uhc_rees))
+
+    def get_new_fac_hwc_desai(self):
+        return self.wait.until(EC.element_to_be_clickable(self.new_fac_hwc_desai))
 
     def get_new_fac_verif(self):
         return self.wait.until(EC.element_to_be_clickable(self.new_fac_verif))
@@ -48,6 +53,9 @@ class ChangeFac(BaseDriver):
 
     def get_yes_btn(self):
         return self.wait.until(EC.element_to_be_clickable(self.yes_btn))
+
+    def get_sync_btn(self):
+        return self.wait.until(EC.element_to_be_clickable(self.sync_btn))
 
     ##Methods##
 
@@ -77,6 +85,9 @@ class ChangeFac(BaseDriver):
     def click_new_fac(self):
         self.get_new_fac_uhc_rees().click()
 
+    def click_new_fac_hwc(self):
+        self.get_new_fac_hwc_desai().click()
+
     def click_yes_btn(self):
         self.get_yes_btn().click()
         time.sleep(2)
@@ -84,4 +95,9 @@ class ChangeFac(BaseDriver):
         new_fac = self.get_fac_sel_btn()
         assert new_fac.text == change_fac_verif.get('new_faci'), 'Facility not changed'
         print('Facility change success')
+
+    def click_yess_btn(self):
+        self.get_yes_btn().click()
+        time.sleep(2)
+
 
