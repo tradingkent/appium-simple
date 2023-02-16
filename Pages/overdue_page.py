@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
-    med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, change_fac_verif
+    med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, change_fac_verif, overdue_patient
 
 #import sl4a
 
@@ -32,7 +32,7 @@ class OverdueDetails(BaseDriver):
     removed_list_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1214][1036,1280]']")
     no_visit_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1415][1036,1481]']")
 
-    pending_call_check = (By.XPATH, "//android.widget.TextView[@text='Ankit Ankit, 59']") #Priya Tanvi, 29
+    pending_call_check = (By.XPATH, f"//android.widget.TextView[@text='{overdue_patient.get('overdue_pat')}']") #Priya Tanvi, 29
 
     call_btn = (By.XPATH, "//android.widget.ImageView[@bounds='[904,808][1014,918]']")
 
@@ -104,7 +104,9 @@ class OverdueDetails(BaseDriver):
             end_ycor = 1051
             try:
                 value = self.get_pending_call_check().is_displayed()
+                value_one = self.get_pending_call_check()
                 if value is True:
+                    assert value_one.text == overdue_patient.get('overdue_pat')
                     print('Overdue Patient Found')
                     break
             except:
@@ -201,7 +203,6 @@ class OverdueDetails(BaseDriver):
 
         remove_list = self.get_removed_list_drp()
         value = int(remove_list.text)
-        print(value)
         assert value == empty_list[2] + 1, 'Not Added'
         print('Success')
 
