@@ -11,9 +11,10 @@ from Utilities.base_driver import BaseDriver
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, change_fac_verif, overdue_patient
 
-#import sl4a
+# import sl4a
 
 empty_list = []
+
 
 class OverdueDetails(BaseDriver):
 
@@ -32,7 +33,8 @@ class OverdueDetails(BaseDriver):
     removed_list_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1214][1036,1280]']")
     no_visit_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1415][1036,1481]']")
 
-    pending_call_check = (By.XPATH, f"//android.widget.TextView[@text='{overdue_patient.get('overdue_pat')}']") #Priya Tanvi, 29
+    pending_call_check = (
+    By.XPATH, f"//android.widget.TextView[@text='{overdue_patient.get('overdue_pat')}']")  # Priya Tanvi, 29
 
     call_btn = (By.XPATH, "//android.widget.ImageView[@bounds='[904,808][1014,918]']")
 
@@ -94,7 +96,7 @@ class OverdueDetails(BaseDriver):
         time.sleep(3)
         self.get_keys_keycode(3)
         time.sleep(2)
-        #self.get_tap_screen(540, 1161)
+        # self.get_tap_screen(540, 1161)
         self.get_tap_screen(544, 1798)
         self.get_overdue_btn().click()
 
@@ -110,10 +112,9 @@ class OverdueDetails(BaseDriver):
                     print('Overdue Patient Found')
                     break
             except:
-                #self.driver.swipe(544, 1866, 522, 870, 300)
+                # self.driver.swipe(544, 1866, 522, 870, 300)
                 self.driver.swipe(507, 1740, 515, end_ycor, 300)
                 continue
-
 
     def scroll_up(self):
         time.sleep(2)
@@ -124,7 +125,7 @@ class OverdueDetails(BaseDriver):
                 if value is True:
                     break
             except:
-                #self.driver.swipe(522, 870, 544, 1866, 300)
+                # self.driver.swipe(522, 870, 544, 1866, 300)
                 self.driver.swipe(515, 1051, 507, end_ycor, 300)
                 continue
 
@@ -210,6 +211,3 @@ class OverdueDetails(BaseDriver):
         self.get_pending_call_drp().click()
         self.get_call_btn().click()
         self.get_overdue_list_rad_btn().click()
-
-
-
