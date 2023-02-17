@@ -130,6 +130,10 @@ class LandingPage(BaseDriver):
         time.sleep(3)
         next_button_verif = self.get_next_btn_verif()
         assert next_button_verif.text == verif.get('startup_verif'), 'App did not load successfully'
+        #trial only
+        #assert next_button_verif.text == 'hehe', 'App did not load successfully'
+        #assert next_button_verif.text == 'haha', 'App did not load successfully'
+
         logger.info('App Launch Successfully')
         self.get_next_button().click()
 
@@ -240,7 +244,4 @@ class LandingPage(BaseDriver):
         assert home_page.text == verif.get('lan_to_home_verif'), 'Failed to proceed to Homepage'
         print('Landing Page Success')
 
-        #trial
-        #self.get_overdue_btn().click()
-        #time.sleep(10)
-        #self.get_patients_btn().click()
+

@@ -66,6 +66,11 @@ change_fac_verif = {'new_faci': 'UHC Rees'}
 overdue_patient = {'overdue_pat': 'Ankit Ankit, 59'}
 
 
+progress_date_sel = {'daily': '10-Feb-2023',
+                     'monthly': 'January 2023',
+                     'yearly': 'Apr-2022 to Mar-2023'}
+
+
 
 
 

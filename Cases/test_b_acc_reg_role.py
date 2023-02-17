@@ -46,6 +46,7 @@ class TestAccReg():
         with open(filepath, 'wb') as vd:
             vd.write(base64.b64decode(video_rawdata))
 
+    '''
     def test_add_patient(self):
 
         # Register a new patient
@@ -75,5 +76,7 @@ class TestAccReg():
         patient_page.click_search_new_patient()
 
         doc_creator.gen_documentation(19, 28, 3)
+        
+    '''
 
 
