@@ -109,11 +109,11 @@ class ProgYearly(BaseDriver):
 
         assert reg_patients.text == 'Registered patients', 'Registered Patients not displayed'
         assert int(reg_yearly.text) != 0, 'No Registered Patients'
-        print('Daily Registered Patient Success')
+        print('Yearly Registered Patient Success')
 
         assert fol_patients.text == 'Follow-up visits', 'Follow-up patients not displayed'
         assert int(fol_yearly.text) != 0, 'No Follow-up Patients'
-        print('Daily Follow-up Patient Success')
+        print('Yearly Follow-up Patient Success')
 
     def click_back_btn(self):
         for i in range(3):

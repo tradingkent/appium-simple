@@ -12,6 +12,7 @@ from Pages.progress_daily_page import ProgDaily
 from Pages.progress_monthly_page import ProgMonthly
 from Pages.progress_yearly_page import ProgYearly
 from Pages.removal_page import RemDetails
+from Pages.reports_page import ReportsHyper
 from Utilities.common import RandomNumberGenerator, DocumentCreator
 from Utilities.common import NameGenerator
 from Utilities.data import details, medical_data
@@ -57,3 +58,14 @@ class TestProgressModule():
         prog_reg_yearly.click_yearly_date_rad_btn()
         prog_reg_yearly.verif_yearly()
         prog_reg_yearly.click_back_btn()
+
+    def test_check_reports(self):
+        # Check Reports
+
+        reports_hyper = ReportsHyper(self.driver, self.wait)
+        reports_hyper.click_hyper_btn()
+        reports_hyper.verif_hyper_page()
+        reports_hyper.click_back_btn()
+
+
+
