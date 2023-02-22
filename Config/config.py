@@ -12,3 +12,6 @@ host = 'http://localhost:4723/wd/hub'
 test_design_dir = 'C:\\python-appium\\simple-demo\\Files\\simple.xlsx'
 
 log_dir = "C:\\python-appium\\simple-demo\\Logs\\log_report.log"
+
+
+

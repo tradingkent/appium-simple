@@ -27,7 +27,7 @@ class ProgMonthly(BaseDriver):
     sync_btn = (By.ID, "org.simple.clinic.staging:id/statusImageView")
     back_btn = (By.XPATH, "//android.view.View[@text='BACK']")
 
-    monthly_btn = (By.XPATH, "//android.view.View[@text='Monthly']")
+    monthly_btn = (By.XPATH, "//android.view.View[@index='2']") #@text='Monthly'
     monthly_period_drp = (By.XPATH, "//android.widget.Spinner[@bounds='[44,748][1039,869]']")
     monthly_date_rad_btn = (By.XPATH, f"//android.widget.CheckedTextView[@text='{progress_date_sel.get('monthly')}']")
     reg_pat_monthly_verif = (By.XPATH, "//android.view.View[@index='5']")
@@ -77,7 +77,7 @@ class ProgMonthly(BaseDriver):
         self.get_progress_tab().click()
 
     def click_monthly_btn(self):
-        time.sleep(2)
+        time.sleep(3)
         self.get_monthly_btn().click()
 
     def click_monthly_period_drp(self):

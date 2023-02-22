@@ -70,6 +70,24 @@ progress_date_sel = {'daily': '10-Feb-2023',
                      'monthly': 'January 2023',
                      'yearly': 'Apr-2022 to Mar-2023'}
 
+progress_drug_date_sel = {'month': 'FEB-2023'}
+
+progress_drug_num = {'zero_received': '10', 'zero_stock': '5',
+                     'one_received': '10', 'one_stock': '5',
+                     'two_received': '10', 'two_stock': '5',
+                     'three_received': '10', 'three_stock': '5',
+                     'four_received': '10', 'four_stock': '5',
+                     'five_received': '10', 'five_stock': '5',
+                     'six_received': '10', 'six_stock': '5',
+                     'zero_redis': '1',
+                     'one_redis': '1',
+                     'two_redis': '1',
+                     'three_redis': '1',
+                     'four_redis': '1',
+                     'five_redis': '1',
+                     'six_redis': '1',
+                     }
+
 
 
 

@@ -27,7 +27,7 @@ class ProgDaily(BaseDriver):
     sync_btn = (By.ID, "org.simple.clinic.staging:id/statusImageView")
     back_btn = (By.XPATH, "//android.view.View[@text='BACK']")
 
-    daily_btn = (By.XPATH, "//android.view.View[@text='Daily']")
+    daily_btn = (By.XPATH, "//android.view.View[@index='1']") #@text='Daily'
     daily_period_drp = (By.XPATH, "//android.widget.Spinner[@bounds='[44,748][1039,869]']")
     daily_date_rad_btn = (By.XPATH, f"//android.widget.CheckedTextView[@text='{progress_date_sel.get('daily')}']")
     reg_pat_daily_verif = (By.XPATH, "//android.view.View[@index='5']")
@@ -77,7 +77,7 @@ class ProgDaily(BaseDriver):
         self.get_progress_tab().click()
 
     def click_daily_btn(self):
-        time.sleep(2)
+        time.sleep(3)
         self.get_daily_btn().click()
 
     def click_daily_period_drp(self):

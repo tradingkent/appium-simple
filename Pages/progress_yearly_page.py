@@ -28,7 +28,7 @@ class ProgYearly(BaseDriver):
     back_btn = (By.XPATH, "//android.view.View[@text='BACK']")
 
     yearly_period_drp = (By.XPATH, "//android.widget.Spinner[@bounds='[44,748][1039,869]']")
-    yearly_btn = (By.XPATH, "//android.view.View[@text='Yearly']")
+    yearly_btn = (By.XPATH, "//android.view.View[@index='3']") #@text='Yearly'
     yearly_date_rad_btn = (By.XPATH, f"//android.widget.CheckedTextView[@text='{progress_date_sel.get('yearly')}']")
     reg_pat_yearly_verif = (By.XPATH, "//android.view.View[@index='5']")
     follow_pat_yearly_verif = (By.XPATH, "//android.view.View[@index='32']")
@@ -77,7 +77,7 @@ class ProgYearly(BaseDriver):
         self.get_progress_tab().click()
 
     def click_yearly_btn(self):
-        time.sleep(2)
+        time.sleep(3)
         self.get_yearly_btn().click()
 
     def click_yearly_period_drp(self):
