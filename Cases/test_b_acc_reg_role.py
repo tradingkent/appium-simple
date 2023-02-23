@@ -18,6 +18,7 @@ doc_creator = DocumentCreator()
 
 @pytest.mark.usefixtures('setup')
 class TestAccReg():
+    @pytest.mark.tags('All', 'TC2')
     def test_acc_reg(self):
 
         # Account registration - Medical facilitator
@@ -46,6 +47,7 @@ class TestAccReg():
         with open(filepath, 'wb') as vd:
             vd.write(base64.b64decode(video_rawdata))
 
+    @pytest.mark.tags('All', 'TC3')
     def test_add_patient(self):
 
         # Register a new patient

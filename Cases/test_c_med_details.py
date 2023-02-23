@@ -23,6 +23,7 @@ doc_creator = DocumentCreator()
 @pytest.mark.usefixtures('setup')
 class TestMedDetails():
 
+    @pytest.mark.tags('All', 'TC4')
     def test_add_med_details(self):
         # Adding of Medicine details in Patient profile (Existing)
 
@@ -33,6 +34,7 @@ class TestMedDetails():
 
         doc_creator.gen_documentation(29, 33, 4)
 
+    @pytest.mark.tags('All', 'TC5')
     def test_add_bp_details(self):
         # Adding of Blood pressure readings in Patient profile
 
@@ -46,6 +48,7 @@ class TestMedDetails():
         medical_details.click_rbs_option()
         medical_details.enter_rbs_field(medical_data.get('rbs'))
 
+    @pytest.mark.tags('All', 'TC6')
     def test_switch_diff_facility(self):
         # Switch to a different facility (Medical Facilitator)
 
@@ -56,6 +59,7 @@ class TestMedDetails():
         medical_details.click_save_btn()
         medical_details.click_done_btn()
 
+    @pytest.mark.tags('All', 'TC7')
     def test_add_new_meds(self):
         # Adding of Medicine details in Patient profile (New)
 
@@ -73,6 +77,7 @@ class TestMedDetails():
         new_meds.click_add_btn()
         new_meds.click_save_btn()
 
+    @pytest.mark.tags('All', 'TC8')
     def test_remove_existing_meds(self):
         # Removal of existing medicine
 
@@ -81,6 +86,7 @@ class TestMedDetails():
         rem_details.click_uncheck_meds()
         rem_details.click_save_btn()
 
+    @pytest.mark.tags('All', 'TC9')
     def test_update_bp_details(self):
         # Update existing Blood pressure details
 
@@ -89,6 +95,7 @@ class TestMedDetails():
         rem_details.enter_sys_dia_edit(medical_data.get('sys_new'),
                                        medical_data.get('dia_new'))
 
+    @pytest.mark.tags('All', 'TC10')
     def test_remove_bp_details(self):
         # Remove existing blood pressure details
 
@@ -97,6 +104,7 @@ class TestMedDetails():
         rem_details.click_remove_bp_btn()
         rem_details.click_remove_prompt_bp_btn()
 
+    @pytest.mark.tags('All', 'TC11')
     def test_update_med_history(self):
         # Update medical history
 

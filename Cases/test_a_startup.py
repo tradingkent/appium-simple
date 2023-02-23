@@ -20,6 +20,7 @@ fol_creator = FolderCreator()
 @pytest.mark.usefixtures('setup')
 class TestLanPage():
 
+    @pytest.mark.tags('All', 'TC1')
     def test_startup(self):
         # Validation of Opening and Start-up Pages
 

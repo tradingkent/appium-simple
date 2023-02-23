@@ -23,6 +23,7 @@ doc_creator = DocumentCreator()
 @pytest.mark.usefixtures('setup')
 class TestFacChange():
 
+    @pytest.mark.tags('All', 'TC14')
     def test_facility_change(self):
         # Switch to a different facility (Medical Facilitator)
 

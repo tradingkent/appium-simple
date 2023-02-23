@@ -24,6 +24,7 @@ doc_creator = DocumentCreator()
 @pytest.mark.usefixtures('setup')
 class TestOverdueRemove():
 
+    @pytest.mark.tags('All', 'TC18')
     def test_overdue_removed_list(self):
         # Add new patient under REMOVED FROM LIST
 

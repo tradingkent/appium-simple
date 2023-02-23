@@ -24,6 +24,7 @@ doc_creator = DocumentCreator()
 @pytest.mark.usefixtures('setup')
 class TestOverdueAgreed():
 
+    @pytest.mark.tags('All', 'TC16')
     def test_overdue_agreed_visit(self):
         # Add new patient under AGREED TO VISIT
 

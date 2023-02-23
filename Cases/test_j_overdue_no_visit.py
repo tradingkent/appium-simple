@@ -24,6 +24,7 @@ doc_creator = DocumentCreator()
 @pytest.mark.usefixtures('setup')
 class TestOverdueNoVisit():
 
+    @pytest.mark.tags('All', 'TC19')
     def test_overdue_no_visit(self):
         # Overdue tab validation of patients no visit
 

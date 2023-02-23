@@ -24,6 +24,7 @@ doc_creator = DocumentCreator()
 @pytest.mark.usefixtures('setup')
 class TestOverduePenCall():
 
+    @pytest.mark.tags('All', 'TC15')
     def test_overdue_pending_call(self):
         # Add new patient under PENDING TO CALL
 

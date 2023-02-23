@@ -29,6 +29,7 @@ doc_creator = DocumentCreator()
 @pytest.mark.usefixtures('setup')
 class TestProgressModule():
 
+    @pytest.mark.tags('All', 'TC20')
     def test_registration_followup_daily(self):
         # Check Daily Option of Registration and Followups
 
@@ -40,6 +41,7 @@ class TestProgressModule():
         prog_reg_daily.verif_daily()
         prog_reg_daily.click_back_btn()
 
+    @pytest.mark.tags('All', 'TC21')
     def test_registration_followup_monthly(self):
         # Check Monthly Option of Registration and Followups
 
@@ -50,6 +52,7 @@ class TestProgressModule():
         prog_reg_monthly.verif_monthly()
         prog_reg_monthly.click_back_btn()
 
+    @pytest.mark.tags('All', 'TC22')
     def test_registration_followup_yearly(self):
         # Check Yearly Option of Registration and Followups
 
@@ -60,6 +63,7 @@ class TestProgressModule():
         prog_reg_yearly.verif_yearly()
         prog_reg_yearly.click_back_btn()
 
+    @pytest.mark.tags('All', 'TC23')
     def test_check_reports(self):
         # Check Reports
 
@@ -68,7 +72,7 @@ class TestProgressModule():
         reports_hyper.verif_hyper_page()
         reports_hyper.click_back_btn()
 
-
+    @pytest.mark.tags('All', 'TC24')
     def test_drug_stock_report(self):
         # Add drug stock under Drug stock report
 

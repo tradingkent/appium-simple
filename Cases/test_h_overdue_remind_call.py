@@ -24,6 +24,7 @@ doc_creator = DocumentCreator()
 @pytest.mark.usefixtures('setup')
 class TestOverdueRemind():
 
+    @pytest.mark.tags('All', 'TC17')
     def test_overdue_remind_call(self):
         # Add new patient under REMIND TO CALL LATER
 

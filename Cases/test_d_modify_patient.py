@@ -23,6 +23,7 @@ doc_creator = DocumentCreator()
 @pytest.mark.usefixtures('setup')
 class TestModDetails():
 
+    @pytest.mark.tags('All', 'TC12')
     def test_update_pat_profile(self):
         # Update of Patient  profile
 
@@ -35,6 +36,7 @@ class TestModDetails():
         mod_details.click_edit_village(new_details_edit.get('village'))
         mod_details.click_save_edit()
 
+    @pytest.mark.tags('All', 'TC13')
     def test_delete_pat_profile(self):
         # Deletion of Patient profile
 
