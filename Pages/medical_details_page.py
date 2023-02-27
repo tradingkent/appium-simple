@@ -8,8 +8,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
+from Utilities.common import LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif
+
+lg = LogFunc()
+logger = lg.get_log()
 
 
 class MedDetails(BaseDriver):
@@ -180,8 +184,8 @@ class MedDetails(BaseDriver):
             emp_med_list.append(meds.text)
 
         assert emp_med_list == med_list_verif, 'Medicine List is not the same'
-        print(emp_med_list)
-        print(med_list_verif)
+        logger.info(emp_med_list)
+        logger.info(med_list_verif)
 
     def click_choose_meds(self):
         self.get_med_amlo().click()
@@ -206,9 +210,9 @@ class MedDetails(BaseDriver):
             emp_blood_sugar.append(blood_sugar.text)
 
         assert emp_blood_sugar == blood_sugars_verif, 'Blood Sugar Category not the same'
-        print(emp_blood_sugar)
-        print(blood_sugars_verif)
-        print('Success: Blood Sugar Category')
+        logger.info(emp_blood_sugar)
+        logger.info(blood_sugars_verif)
+        logger.info('Success: Blood Sugar Category')
 
     def click_teleconsult_btn(self):
         self.get_teleconsult_btn().click()
@@ -219,7 +223,7 @@ class MedDetails(BaseDriver):
 
         home_page = self.get_landing_verif()
         assert home_page.text == verif.get('lan_to_home_verif'), 'Failed to proceed to Homepage'
-        print('Success Add Medical Details')
+        logger.info('Success Add Medical Details')
 
     def click_save_btn(self):
         self.get_save_btn().click()
@@ -238,11 +242,11 @@ class MedDetails(BaseDriver):
         num_of_days_minus_cast = int(num_of_days_minus_sliced)
 
         total = number_of_days_cast - click
-        print(total)
-        print(num_of_days_minus_cast)
+        logger.info(total)
+        logger.info(num_of_days_minus_cast)
 
         assert total == num_of_days_minus_cast, 'Minus counter calculation is wrong'
-        print('Success Minus Counter check')
+        logger.info('Success Minus Counter check')
 
         for i in range(click):
             self.get_sched_add().click()
@@ -251,11 +255,11 @@ class MedDetails(BaseDriver):
         num_of_days_add_sliced = num_of_days_add.text[0:2]
         num_of_days_add_cast = int(num_of_days_add_sliced)
 
-        print(number_of_days_cast)
-        print(num_of_days_add_cast)
+        logger.info(number_of_days_cast)
+        logger.info(num_of_days_add_cast)
 
         assert number_of_days_cast == num_of_days_add_cast, 'Add counter calculation is wrong'
-        print('Success Add Counter check')
+        logger.info('Success Add Counter check')
 
     def click_medicine_list(self):
         self.get_medicine_list().click()
@@ -271,8 +275,8 @@ class MedDetails(BaseDriver):
             emp_meds_verif.append(meds_verif.text)
         emp_meds_verif.pop(0)
         assert emp_meds_verif == meds_check_verif, 'Selected Medicine is not located'
-        print(emp_meds_verif)
-        print(meds_check_verif)
+        logger.info(emp_meds_verif)
+        logger.info(meds_check_verif)
         self.cap_screenshot('4', '4')
 
     # Add BP
@@ -294,16 +298,17 @@ class MedDetails(BaseDriver):
 
         self.get_bp_day_field().send_keys(day)
         user_action = TouchAction(self.driver)
-        user_action.tap(x=928, y=2051).perform()
+        # user_action.tap(x=928, y=2051).perform() # emulator
+        user_action.tap(x=932, y=2209).perform() # real device
 
         time.sleep(2)
 
         bp_result = self.get_bp_result_verif()
         bp_date_visit = self.get_bp_visit_date_verif()
         assert bp_result.text == medical_data.get('bp_res'), 'Blood Pressure Readings not reflected'
-        print('Success: Blood Pressure readings reflected')
+        logger.info('Success: Blood Pressure readings reflected')
         assert bp_date_visit.text == medical_data.get('bp_date_visit'), 'Visit date not reflected'
-        print('Success: Visit date reflected')
+        logger.info('Success: Visit date reflected')
 
     # Diabetes
 
@@ -316,8 +321,9 @@ class MedDetails(BaseDriver):
         time.sleep(2)
 
         user_action = TouchAction(self.driver)
-        user_action.tap(x=928, y=2051).perform()
+        # user_action.tap(x=928, y=2051).perform() # emulator
+        user_action.tap(x=932, y=2209).perform() # real device
 
         diabetes_result = self.get_diabetes_verif()
         assert diabetes_result.text == medical_data.get('diabetes_verif'), 'Blood Sugar not reflected'
-        print('Success: Blood Sugar reflected')
+        logger.info('Success: Blood Sugar reflected')

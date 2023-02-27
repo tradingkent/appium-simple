@@ -10,8 +10,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
+from Utilities.common import LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details
 
+lg = LogFunc()
+logger = lg.get_log()
 
 class PatientPage(BaseDriver):
 
@@ -167,7 +170,7 @@ class PatientPage(BaseDriver):
 
     def check_illness_list(self):
         illness_list = self.get_illness_list()
-        print(illness_list.text)
+        logger.info(illness_list.text)
 
     def click_yes_rad_btn(self):
         start = 0
@@ -244,7 +247,7 @@ class PatientPage(BaseDriver):
         time.sleep(4)
         pat_name_verif = self.get_search_patient_verif()
         assert pat_name_verif.text == pat_name + ', M, 25', 'Search of patient failed'
-        print('Search of patient success')
+        logger.info('Search of patient success')
 
     def click_search_new_patient(self):
 

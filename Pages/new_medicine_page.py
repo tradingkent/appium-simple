@@ -8,9 +8,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from Utilities.common import LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, meds_new_check_verif
 
+lg = LogFunc()
+logger = lg.get_log()
 
 class NewMedicine():
 
@@ -131,9 +134,9 @@ class NewMedicine():
         for meds in med_list:
             emp_med_list.append(meds.text)
 
-        print(emp_med_list)
+        logger.info(emp_med_list)
         assert medical_data.get('added_new_med') in emp_med_list, 'New Medicine not added'
-        print('Success: New medicine added')
+        logger.info('Success: New medicine added')
 
     def click_save_btn(self):
         self.get_save_btn().click()
@@ -146,9 +149,9 @@ class NewMedicine():
         emp_meds_verif.pop(0)
         emp_meds_verif.pop(-1)
         assert emp_meds_verif == meds_new_check_verif, 'Added New Medicine is not located'
-        print(emp_meds_verif)
-        print(meds_new_check_verif)
-        print('Success: Add Medicine')
+        logger.info(emp_meds_verif)
+        logger.info(meds_new_check_verif)
+        logger.info('Success: Add Medicine')
 
 
 

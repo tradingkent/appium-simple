@@ -1,5 +1,5 @@
 
-desired_cap = {"appium:deviceName": "Android Emulator",
+desired_cap = {"appium:deviceName": "4cdda091", #4cdda091  Android Emulator
                "platformName": "Android",
                "appium:appPackage": "org.simple.clinic.staging",
                "appium:appWaitActivity": "org.simple.clinic.setup.SetupActivity",

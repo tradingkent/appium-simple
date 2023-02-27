@@ -22,7 +22,6 @@ class TestAccReg():
     def test_acc_reg(self):
 
         # Account registration - Medical facilitator
-        self.driver.start_recording_screen()
 
         landing_page = LandingPage(self.driver, self.wait)
         landing_page.click_rad_btn_demo_country()
@@ -40,12 +39,6 @@ class TestAccReg():
         landing_page.click_skip_button()
 
         doc_creator.gen_documentation(5, 18, 2)
-
-        video_rawdata = self.driver.stop_recording_screen()
-        vid_name = 'sample'
-        filepath = os.path.join("C:\\python-appium\\simple-demo\\Screenshot\\", vid_name + '.mp4')
-        with open(filepath, 'wb') as vd:
-            vd.write(base64.b64decode(video_rawdata))
 
     @pytest.mark.tags('All', 'TC3')
     def test_add_patient(self):

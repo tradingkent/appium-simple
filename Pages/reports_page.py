@@ -9,8 +9,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
+from Utilities.common import LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, removal_verif, progress_date_sel
+
+lg = LogFunc()
+logger = lg.get_log()
 
 
 class ReportsHyper(BaseDriver):
@@ -62,7 +66,7 @@ class ReportsHyper(BaseDriver):
     def click_back_btn(self):
         self.get_back_btn().click()
 
-    #Verif
+    # Verif
 
     def verif_hyper_page(self):
         hyper_verif = self.get_hyper_verif()
@@ -77,7 +81,4 @@ class ReportsHyper(BaseDriver):
         assert total_reg.text == 'Total registered patients', 'Not Exist'
         assert monthly_verif.text == 'Monthly follow-up patients', 'Not Exist'
 
-        print('Progress Reports Success')
-
-
-
+        logger.info('Progress Reports Success')

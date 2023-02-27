@@ -9,9 +9,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
+from Utilities.common import LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, removal_verif, progress_date_sel
 
+lg = LogFunc()
+logger = lg.get_log()
 
 class ProgMonthly(BaseDriver):
 
@@ -109,11 +112,11 @@ class ProgMonthly(BaseDriver):
 
         assert reg_patients.text == 'Registered patients', 'Registered Patients not displayed'
         assert int(reg_monthly.text) != 0, 'No Registered Patients'
-        print('Monthly Registered Patient Success')
+        logger.info('Monthly Registered Patient Success')
 
         assert fol_patients.text == 'Follow-up patients', 'Follow-up patients not displayed'
         assert int(fol_monthly.text) != 0, 'No Follow-up Patients'
-        print('Monthly Follow-up Patient Success')
+        logger.info('Monthly Follow-up Patient Success')
 
     def click_back_btn(self):
         for i in range(3):

@@ -9,10 +9,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
+from Utilities.common import LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, removal_verif, progress_date_sel, \
     progress_drug_date_sel, progress_drug_num
 
+
+lg = LogFunc()
+logger = lg.get_log()
 
 class AddDrugStock(BaseDriver):
 
@@ -313,7 +317,7 @@ class AddDrugStock(BaseDriver):
         assert ver_drug_four_stock_sliced == int(progress_drug_num.get('four_stock')), 'Drug not reflected'
         assert ver_drug_two_stock_sliced == int(progress_drug_num.get('two_stock')), 'Drug not reflected'
 
-        print('Success Drug Report')
+        logger.info('Success Drug Report')
         time.sleep(2)
         self.get_done_btn().click()
 
@@ -431,4 +435,4 @@ class AddDrugStock(BaseDriver):
         assert ver_drug_four_stock_sliced == int(progress_drug_num.get('four_stock')), 'Drug not reflected'
         assert ver_drug_two_stock_sliced == int(progress_drug_num.get('two_stock')), 'Drug not reflected'
 
-        print('Success Drug Report in Progress Page')
+        logger.info('Success Drug Report in Progress Page')

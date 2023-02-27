@@ -9,8 +9,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
+from Utilities.common import LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, removal_verif
+
+lg = LogFunc()
+logger = lg.get_log()
 
 
 class RemDetails(BaseDriver):
@@ -47,7 +51,6 @@ class RemDetails(BaseDriver):
     search_patient_box = (By.ID, "org.simple.clinic.staging:id/searchQueryTextInputLayout")
     search_new_patient = (By.ID, "org.simple.clinic.staging:id/patientNameAgeGenderLabel")
     done_btn = (By.ID, "org.simple.clinic.staging:id/doneButton")
-
 
     # verif
     med_removed_verif = (By.ID, "org.simple.clinic.staging:id/emptyMedicinesTextView")
@@ -146,7 +149,7 @@ class RemDetails(BaseDriver):
         assert uncheck_ateno == 'false', 'Medicine not unchecked'
         assert uncheck_chlor == 'false', 'Medicine not unchecked'
 
-        print('Uncheck of meds success')
+        logger.info('Uncheck of meds success')
 
     def click_save_btn(self):
         self.get_save_btn().click()
@@ -154,7 +157,7 @@ class RemDetails(BaseDriver):
 
         rem_meds_verif = self.get_med_removed_verif()
         assert rem_meds_verif.text == removal_verif.get('med_removed'), 'Meds still exist'
-        print('Success removal of Meds')
+        logger.info('Success removal of Meds')
 
     def click_bp_edit(self):
         self.get_bp_edit().click()
@@ -171,11 +174,12 @@ class RemDetails(BaseDriver):
             self.get_keys_keycode(67)
         self.get_diastolic_field().send_keys(dia_edit)
         time.sleep(2)
-        self.get_tap_screen(931, 2048)
+        # self.get_tap_screen(931, 2048) # emulator
+        self.get_tap_screen(932, 2209)  # real device
 
         bp_edit_readings = self.get_bp_edit_readings()
         assert bp_edit_readings.text == removal_verif.get('new_bp_edit'), 'New BP not detected'
-        print('New BP detected')
+        logger.info('New BP detected')
 
     def click_bp_edit_remove(self):
         self.get_bp_edit().click()
@@ -189,7 +193,7 @@ class RemDetails(BaseDriver):
 
         bp_removed = self.get_bp_remove_verif()
         assert bp_removed.text == removal_verif.get('bp_removed'), 'BP not removed'
-        print('BP removal success')
+        logger.info('BP removal success')
 
     def click_edit_save_btn(self):
         self.get_edit_save_btn().click()
@@ -214,13 +218,7 @@ class RemDetails(BaseDriver):
 
         assert meds_verif_search.text == removal_verif.get('med_removed'), 'Meds still exist'
         assert bp_verif_search.text == removal_verif.get('bp_removed'), 'BP not removed'
-        print('Search Update Meds Success')
-
+        logger.info('Search Update Meds Success')
 
     def click_done_btn(self):
         self.get_done_btn().click()
-
-
-
-
-

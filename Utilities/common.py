@@ -38,7 +38,7 @@ class NameGenerator:
 
 class FolderCreator:
     def create_folder(self):
-        for i in range(1, 23):
+        for i in range(1, 25):
             directory = f"C:\\python-appium\\simple-demo\\Screenshot\\TC_{str(i)}"
             shutil.rmtree(directory)
             os.makedirs(directory)

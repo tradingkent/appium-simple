@@ -53,7 +53,7 @@ def create_folder():
 
 create_folder()
 '''
-
+'''
 import os
 import shutil
 
@@ -67,25 +67,123 @@ def create_folder():
 
 create_folder()
 
-
-
-
-
-
-
-
 #len = 25
 
 #print(type(len))
-''''
-sample = '28 days'
-sam_slice = sample[0:2]
-print(sam_slice)
-sam_cast = int(sam_slice)
-print(type(sam_cast))
-'''
+
 
 list_a = ['apple', 'banana', 'orange']
 
 assert 'apple' in list_a, 'Not found'
 print('Success')
+'''
+
+'''
+# Take input from the user
+numbers = []
+for i in range(8):
+    num = int(input(f"Enter number {i+1}: "))
+    numbers.append(num)
+
+# Sort the list in descending order
+numbers.sort(reverse=True)
+
+# Print the top highest numbers in descending order
+print("Top highest numbers in descending order:")
+for i in range(3):
+    print(numbers[i])
+    
+'''
+
+
+
+
+
+
+
+
+'''
+# Question #1
+emp_list = []
+for i in range(8):
+    user_input = int(input(f'Please enter digit {i+1} : '))
+    emp_list.append(user_input)
+
+
+emp_list.sort() #reverse=True
+
+print('The lowest three numbers are: ')
+for i in range(3):
+    print(emp_list[i])
+'''
+
+'''
+# Take input text from the user
+text = input("Enter text: ")
+
+# Split the text into a list of words
+words = text.split()
+
+
+# Count the frequency of each word and store in a dictionary
+word_freq = {}
+for word in words:
+    if word.isalpha():  # Consider only alphabetical words
+        if word in word_freq:
+            word_freq[word] += 1
+        else:
+            word_freq[word] = 1
+
+# Find the most frequent word
+most_frequent_word = max(word_freq, key=word_freq.get)
+
+# Find the longest word
+longest_word = max(words, key=len)
+
+# Print the results
+print("Most frequent word:", most_frequent_word)
+print("Longest word:", longest_word)
+print(word_freq)
+
+'''
+
+'''
+def reverse_vowels(input_str):
+    vowels = 'aeiouAEIOU'
+    str_list = list(input_str)
+    vowels_list = []
+    for i in range(len(str_list)):
+        if str_list[i] in vowels:
+            vowels_list.append(str_list[i])
+            str_list[i] = None
+    vowels_list.reverse()
+    for i in range(len(str_list)):
+        if str_list[i] is None:
+            str_list[i] = vowels_list.pop(0)
+    return ''.join(str_list)
+
+
+input_str = input('Enter a word:')
+reversed_vowels = reverse_vowels(input_str)
+print(reversed_vowels)  # Output: "hollo werld"
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

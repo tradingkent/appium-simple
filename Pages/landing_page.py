@@ -130,9 +130,6 @@ class LandingPage(BaseDriver):
         time.sleep(3)
         next_button_verif = self.get_next_btn_verif()
         assert next_button_verif.text == verif.get('startup_verif'), 'App did not load successfully'
-        #trial only
-        #assert next_button_verif.text == 'hehe', 'App did not load successfully'
-        #assert next_button_verif.text == 'haha', 'App did not load successfully'
 
         logger.info('App Launch Successfully')
         self.get_next_button().click()
@@ -165,9 +162,9 @@ class LandingPage(BaseDriver):
         for country in country_list:
             empty_country_list.append(country.text)
         assert empty_country_list == country_list_verif, 'Expected Country list not the same'
-        print(empty_country_list)
-        print(country_list_verif)
-        print('Country List Success')
+        logger.info(empty_country_list)
+        logger.info(country_list_verif)
+        logger.info('Country List Success')
         self.get_rad_btn_demo_country().click()
         self.cap_screenshot('2', '2')
 
@@ -179,9 +176,9 @@ class LandingPage(BaseDriver):
         for region_clinic in region_clinic_list:
             empty_region_clinic_list.append(region_clinic.text)
         assert empty_region_clinic_list == region_clinic_list_verif, 'Expected Region Clinic list not the same'
-        print(empty_region_clinic_list)
-        print(region_clinic_list_verif)
-        print('Region Clinic List Success')
+        logger.info(empty_region_clinic_list)
+        logger.info(region_clinic_list_verif)
+        logger.info('Region Clinic List Success')
         self.get_rad_btn_tripura().click()
         self.cap_screenshot('2', '3')
 
@@ -198,6 +195,7 @@ class LandingPage(BaseDriver):
         self.cap_screenshot('2', '8')
 
     def enter_sec_pin_two(self, pin_two):
+        time.sleep(3)
         self.get_sec_pin_two().send_keys(pin_two)
         self.cap_screenshot('2', '9')
 
@@ -215,9 +213,9 @@ class LandingPage(BaseDriver):
         for facility_name in facility_name_list:
             empty_facility_name_list.append(facility_name.text)
         assert empty_facility_name_list == facility_name_list_verif, 'Expected Facility Name list not the same'
-        print(empty_facility_name_list)
-        print(facility_name_list_verif)
-        print('Facility Name List Success')
+        logger.info(empty_facility_name_list)
+        logger.info(facility_name_list_verif)
+        logger.info('Facility Name List Success')
 
     def click_facility_name(self):
         self.get_facility_name().click()
@@ -229,7 +227,7 @@ class LandingPage(BaseDriver):
         self.cap_screenshot('2', '12')
         search_fac_name_verif = self.get_search_fac_name_verif()
         assert search_fac_name_verif.text == details.get('fac_name'), 'Unable to search facility name'
-        print('Search Facility Success')
+        logger.info('Search Facility Success')
         self.get_fac_name().click()
 
     def click_yes_button(self):
@@ -242,6 +240,6 @@ class LandingPage(BaseDriver):
         time.sleep(5)
         home_page = self.get_landing_verif()
         assert home_page.text == verif.get('lan_to_home_verif'), 'Failed to proceed to Homepage'
-        print('Landing Page Success')
+        logger.info('Landing Page Success')
 
 

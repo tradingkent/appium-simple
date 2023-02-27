@@ -63,7 +63,7 @@ new_details_verif = {'name_verif': ', F, 26',
 
 change_fac_verif = {'new_faci': 'UHC Rees'}
 
-overdue_patient = {'overdue_pat': 'Amit Amit, 85'}
+overdue_patient = {'overdue_pat': 'Rohit Rohit, 64'}
 
 
 progress_date_sel = {'daily': '10-Feb-2023',

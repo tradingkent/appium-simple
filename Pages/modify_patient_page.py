@@ -9,13 +9,16 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
-from Utilities.common import NameGenerator
+from Utilities.common import NameGenerator, LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, removal_verif, new_details_verif, \
     new_details_edit
 
 name_generator = NameGenerator()
 
+
+lg = LogFunc()
+logger = lg.get_log()
 
 class ModDetails(BaseDriver):
 
@@ -160,7 +163,7 @@ class ModDetails(BaseDriver):
         assert new_name_verif.text == name_generator.names[0]+new_details_verif.get('name_verif'), 'Name not updated'
         assert new_address_verif.text == new_details_verif.get('address_verif'), 'Address not updated'
         assert new_contact_verif.text == new_details_edit.get('number')
-        print('Success Edit Patient Details')
+        logger.info('Success Edit Patient Details')
 
     def click_edit_del_patient_btn(self):
         self.get_edit_patient_btn().click()
@@ -185,7 +188,7 @@ class ModDetails(BaseDriver):
 
         search_result_del = self.get_search_verif_no_res()
         assert search_result_del.text == new_details_verif.get('no_search'), 'Patient record not deleted'
-        print('Success Patient Record Deletion')
+        logger.info('Success Patient Record Deletion')
 
         for i in range(2):
             self.driver.back()

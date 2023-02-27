@@ -8,10 +8,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Utilities.base_driver import BaseDriver
+from Utilities.common import LogFunc
 from Utilities.data import verif, country_list_verif, region_clinic_list_verif, facility_name_list_verif, details, \
     med_list_verif, meds_check_verif, medical_data, blood_sugars_verif, change_fac_verif, overdue_patient
 
-# import sl4a
+lg = LogFunc()
+logger = lg.get_log()
 
 empty_list = []
 
@@ -27,16 +29,22 @@ class OverdueDetails(BaseDriver):
 
     overdue_btn = (By.XPATH, "//android.widget.TextView[@text='OVERDUE']")
 
-    pending_call_drp = (By.XPATH, "//android.widget.TextView[@bounds='[876,611][1036,677]']")
-    agreed_visit_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,812][1036,878]']")
-    remind_call_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1013][1036,1079]']")
-    removed_list_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1214][1036,1280]']")
-    no_visit_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1415][1036,1481]']")
+    pending_call_drp = (By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]")
+    agreed_visit_drp = (By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.TextView[2]")
+    remind_call_drp = (By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.TextView[2]")
+    removed_list_drp = (By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]/android.widget.TextView[2]")
+    no_visit_drp = (By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]/android.widget.TextView[2]")
+    #pending_call_drp = (By.XPATH, "//android.widget.TextView[@bounds='[876,611][1036,677]']") # emulator
+    #agreed_visit_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,812][1036,878]']") # emulator
+    #remind_call_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1013][1036,1079]']") # emulator
+    #removed_list_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1214][1036,1280]']") # emulator
+    #no_visit_drp = (By.XPATH, "//android.widget.TextView[@bounds='[924,1415][1036,1481]']") # emulator
 
     pending_call_check = (
-    By.XPATH, f"//android.widget.TextView[@text='{overdue_patient.get('overdue_pat')}']")  # Priya Tanvi, 29
+        By.XPATH, f"//android.widget.TextView[@text='{overdue_patient.get('overdue_pat')}']")  # Priya Tanvi, 29
 
-    call_btn = (By.XPATH, "//android.widget.ImageView[@bounds='[904,808][1014,918]']")
+    #call_btn = (By.XPATH, "//android.widget.ImageView[@bounds='[904,808][1014,918]']") # emulator
+    call_btn = (By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.ImageView[2]")
 
     agreed_visit_rad_btn = (By.ID, "org.simple.clinic.staging:id/agreedToVisitTextView")
     call_later_rad_btn = (By.ID, "org.simple.clinic.staging:id/remindToCallLaterTextView")
@@ -94,10 +102,11 @@ class OverdueDetails(BaseDriver):
     def click_overdue_btn(self):
         self.get_overdue_btn().click()
         time.sleep(3)
-        self.get_keys_keycode(3)
-        time.sleep(2)
+        self.driver.background_app(3)
+        # self.get_keys_keycode(3)
+        # time.sleep(2)
         # self.get_tap_screen(540, 1161)
-        self.get_tap_screen(544, 1798)
+        # self.get_tap_screen(544, 1798)
         self.get_overdue_btn().click()
 
     def scroll(self):
@@ -109,7 +118,7 @@ class OverdueDetails(BaseDriver):
                 value_one = self.get_pending_call_check()
                 if value is True:
                     assert value_one.text == overdue_patient.get('overdue_pat')
-                    print('Overdue Patient Found')
+                    logger.info('Overdue Patient Found')
                     break
             except:
                 # self.driver.swipe(544, 1866, 522, 870, 300)
@@ -172,15 +181,16 @@ class OverdueDetails(BaseDriver):
 
         no_visit = self.get_no_visit_drp()
         value = int(no_visit.text)
-        print(value)
+        logger.info(value)
         assert value != 0, 'No visit is empty'
-        print('Success')
+        logger.info('Success')
 
     def verif_agreed_visit_drp(self):
         agreed_visit = self.get_agreed_visit_drp()
         value = int(agreed_visit.text)
+        logger.info(value)
         assert value == empty_list[0] + 1, 'Not Added'
-        print('Success')
+        logger.info('Success')
 
     def click_pending_call_drp_remind(self):
         self.get_pending_call_drp().click()
@@ -192,8 +202,9 @@ class OverdueDetails(BaseDriver):
     def verif_remind_call_drp(self):
         remind_call = self.get_remind_call_drp()
         value = int(remind_call.text)
+        logger.info(value)
         assert value == empty_list[1] + 1, 'Not Added'
-        print('Success')
+        logger.info('Success')
 
     def click_reason_rad_btn(self):
         self.get_reason_rad_btn().click()
@@ -204,8 +215,9 @@ class OverdueDetails(BaseDriver):
 
         remove_list = self.get_removed_list_drp()
         value = int(remove_list.text)
+        logger.info(value)
         assert value == empty_list[2] + 1, 'Not Added'
-        print('Success')
+        logger.info('Success')
 
     def click_pending_call_drp_remove(self):
         self.get_pending_call_drp().click()
